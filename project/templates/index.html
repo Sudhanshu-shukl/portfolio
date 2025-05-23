@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multi-Cancer Prediction Tool</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">
+                <div class="logo-icon">
+                    <span class="pulse"></span>
+                </div>
+                <h1>CancerPredict</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li class="active"><a href="{{ url_for('index') }}">Home</a></li>
+                    <li><a href="{{ url_for('symptoms') }}">Check Symptoms</a></li>
+                </ul>
+            </nav>
+        </header>
+        
+        <main class="home-content">
+            <section class="hero">
+                <div class="hero-content">
+                    <h1>Early Detection <span>Saves Lives</span></h1>
+                    <p>ML-powered tool to assess your symptoms and get early insights about potential cancer risks.</p>
+                    <a href="{{ url_for('symptoms') }}" class="cta-button">Check Your Symptoms</a>
+                </div>
+                <div class="hero-image">
+                    <div class="medical-illustration">
+                        <div class="medical-icon"></div>
+                    </div>
+                </div>
+            </section>
+            
+            <section class="info-cards">
+                <div class="card">
+                    <div class="card-icon">
+                        <div class="icon-check"></div>
+                    </div>
+                    <h3>Quick Assessment</h3>
+                    <p>Simple symptom selection that takes less than 2 minutes to complete.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">
+                        <div class="icon-brain"></div>
+                    </div>
+                    <h3>AI-Powered</h3>
+                    <p>Our machine learning algorithms analyze patterns to provide insights.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">
+                        <div class="icon-shield"></div>
+                    </div>
+                    <h3>Private & Secure</h3>
+                    <p>Your health information stays private and is never stored or shared.</p>
+                </div>
+            </section>
+            
+            <section class="disclaimer">
+                <div class="disclaimer-content">
+                    <h2>Important Disclaimer</h2>
+                    <p>This tool is for educational purposes only and is not a substitute for professional medical advice, diagnosis, or treatment. Always seek the advice of your physician or other qualified health provider with any questions you may have regarding a medical condition.</p>
+                </div>
+            </section>
+        </main>
+        
+    </div>
+    
+    <script>
+        // Simple animation for page load
+        document.addEventListener('DOMContentLoaded', function() {
+            document.body.classList.add('loaded');
+        });
+    </script>
+</body>
+</html>
