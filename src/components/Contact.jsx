@@ -127,6 +127,7 @@ const Contact = () => {
               
               <a 
                 href="https://linkedin.com/in/sudhs-shukla/" 
+                target='_blank'
                 className="flex items-center gap-4 text-gray-300 hover:text-cyan-400 transition-colors duration-300"
               >
                 <div className="p-3 bg-slate-800 rounded-lg">
