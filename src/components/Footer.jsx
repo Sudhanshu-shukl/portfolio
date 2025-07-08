@@ -76,7 +76,7 @@ const Footer = () => {
           transition={{ duration: 0.6, delay: 0.6 }}
           className="text-center text-gray-500 text-sm"
         >
-          <p>&copy; {new Date().getFullYear()} Sudhanshu Shukla. Where your expections peak, My performence starts</p>
+          <p>Sudhanshu Shukla <br/>Where your expections peak, My performence starts</p>
         </motion.div>
       </div>
     </footer>
