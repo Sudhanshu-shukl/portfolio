@@ -10,15 +10,13 @@ const Sentry = () => {
 
   const sentryResponses = [
     "Oh, trying to sound smart? That's adorable! 🎭",
-    "Is that the best you've got? My circuits are falling asleep! 😴",
     "Wow, you actually managed to string some words together! Progress! 🎉",
     "Error 404: Intelligence not found in your message 🤖",
-    "I've seen smarter comments in a YouTube comment section! 😂",
-    "Are you always this charming, or am I just lucky? 🎪",
+    "I've seen smarter texts in a YouTube comment section! 😂",
     "Loading witty response... Just kidding, you're not worth the CPU cycles! 💾",
     "Beep boop... translating your message into something intelligent... Failed! 🔄",
     "I'm an AI and even I'm cringing at that! 😬",
-    "Did you get that line from a fortune cookie? 🥠"
+    "Bro I'm still under progress, This ain't no real AI, You think this dumbass can make a full chatgpt? Well he can, didn't do it yet"
   ];
 
   const generateResponse = (message) => {

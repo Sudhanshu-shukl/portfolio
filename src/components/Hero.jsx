@@ -108,7 +108,6 @@ const Hero = ({ setActiveSection }) => {
                 placeholderSrc="Sudhanshu.jpg"
                 alt="Sudhanshu Shukla"
                 effect="blur"
-                className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700"
               />
               
               {/* Animated overlay */}

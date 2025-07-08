@@ -26,7 +26,7 @@ const Education = () => {
       degree: "B.Tech in Artificial Intelligence & Machine Learning",
       institution: "NIET, Greater Noida",
       duration: "2023 - 2027 (Expected)",
-      description: "Currently in 2nd year, exploring the depths of AI and ML technologies while participating in various tech events and hackathons."
+      description: "Currently in 3rd year, exploring the depths of AI and ML technologies while participating in various tech events and hackathons."
     },
     {
       icon: <School className="w-10 h-10 text-cyan-400" />,

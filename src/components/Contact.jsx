@@ -104,13 +104,13 @@ const Contact = () => {
             
             <div className="space-y-6">
               <a 
-                href="mailto:email@example.com" 
+                href="mailto:shuklasudhanshu2304005@gmail.com" 
                 className="flex items-center gap-4 text-gray-300 hover:text-cyan-400 transition-colors duration-300"
               >
                 <div className="p-3 bg-slate-800 rounded-lg">
                   <Mail className="w-6 h-6" />
                 </div>
-                <span>email@example.com</span>
+                <span>shuklasudhanshu2304005@gmail.com</span>
               </a>
               
               <a 
@@ -126,13 +126,13 @@ const Contact = () => {
               </a>
               
               <a 
-                href="#" 
+                href="https://linkedin.com/in/sudhs-shukla/" 
                 className="flex items-center gap-4 text-gray-300 hover:text-cyan-400 transition-colors duration-300"
               >
                 <div className="p-3 bg-slate-800 rounded-lg">
                   <Linkedin className="w-6 h-6" />
                 </div>
-                <span>LinkedIn</span>
+                <span>sudhs-shukla</span>
               </a>
             </div>
             

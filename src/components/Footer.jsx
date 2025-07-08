@@ -53,7 +53,7 @@ const Footer = () => {
           </a>
           
           <a 
-            href="#" 
+            href="https://linkedin.com/in/sudhs-shukla/" 
             className="p-3 bg-slate-800 rounded-full hover:bg-slate-700 transition-colors duration-300"
             aria-label="LinkedIn"
           >
@@ -61,7 +61,7 @@ const Footer = () => {
           </a>
           
           <a 
-            href="mailto:email@example.com"
+            href="mailto:shuklasudhanshu2304005@gmail.com"
             className="p-3 bg-slate-800 rounded-full hover:bg-slate-700 transition-colors duration-300"
             aria-label="Email"
           >
