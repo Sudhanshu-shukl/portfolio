@@ -168,7 +168,7 @@ const Contact = () => {
                 <p className="text-gray-300">Thank you for reaching out. I'll get back to you soon.</p>
               </motion.div>
             ) : (
-              <form onSubmit={handleSubmit} className="space-y-6">
+              <form action='https://formspree.io/f/manjgokj' method="post" className="space-y-6">
                 <div>
                   <label htmlFor="name" className="block text-gray-300 mb-2">Name</label>
                   <input
