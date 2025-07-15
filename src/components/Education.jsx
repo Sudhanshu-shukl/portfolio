@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { GraduationCap, School } from 'lucide-react';
@@ -12,6 +12,13 @@ const Education = () => {
   const [sectionRef, sectionInView] = useInView({
     threshold: 0.5,
   });
+  const [hasAnimated, setHasAnimated] = useState(false);
+
+  useEffect(() => {
+    if (inView && !hasAnimated) {
+      setHasAnimated(true);
+    }
+  }, [inView, hasAnimated]);
 
   useEffect(() => {
     if (!sectionInView) return;
@@ -46,7 +53,7 @@ const Education = () => {
       <div className="container mx-auto px-4 py-16">
         <motion.div
           initial="hidden"
-          animate={inView ? "visible" : "hidden"}
+          animate={hasAnimated ? "visible" : "hidden"}
           variants={{
             hidden: { opacity: 0, y: 30 },
             visible: { 
@@ -79,7 +86,7 @@ const Education = () => {
                 <motion.div
                   key={index}
                   initial={{ opacity: 0, y: 50 }}
-                  animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
+                  animate={hasAnimated ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
                   transition={{ duration: 0.8, delay: 0.3 + index * 0.2 }}
                   className={`relative flex flex-col md:flex-row ${
                     index % 2 === 0 ? 'md:flex-row-reverse' : ''

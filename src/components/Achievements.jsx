@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { Trophy, Award, Target } from 'lucide-react';
@@ -12,6 +12,13 @@ const Achievements = () => {
   const [sectionRef, sectionInView] = useInView({
     threshold: 0.5,
   });
+  const [hasAnimated, setHasAnimated] = useState(false);
+
+  useEffect(() => {
+    if (inView && !hasAnimated) {
+      setHasAnimated(true);
+    }
+  }, [inView, hasAnimated]);
 
   useEffect(() => {
     if (!sectionInView) return;
@@ -37,7 +44,7 @@ const Achievements = () => {
       <div className="container mx-auto px-4 py-16">
         <motion.div
           initial="hidden"
-          animate={inView ? "visible" : "hidden"}
+          animate={hasAnimated ? "visible" : "hidden"}
           variants={{
             hidden: { opacity: 0, y: 30 },
             visible: { 
@@ -63,7 +70,7 @@ const Achievements = () => {
             <motion.div
               key={index}
               initial={{ opacity: 0, y: 30 }}
-              animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+              animate={hasAnimated ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
               transition={{ duration: 0.6, delay: 0.2 }}
               className="holographic p-6 rounded-lg mb-8 relative overflow-hidden"
             >
@@ -87,7 +94,7 @@ const Achievements = () => {
           
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
-            animate={inView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.9 }}
+            animate={hasAnimated ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.9 }}
             transition={{ duration: 0.8, delay: 0.4 }}
             className="holographic p-8 rounded-lg mt-16 text-center"
           >

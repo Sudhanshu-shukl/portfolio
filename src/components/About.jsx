@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { motion, useAnimation } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { Bot, Music, Check as Chess, Code, Terminal } from 'lucide-react';
@@ -13,14 +13,14 @@ const About = ({ theme }) => {
   const [sectionRef, sectionInView] = useInView({
     threshold: 0.5,
   });
+  const [hasAnimated, setHasAnimated] = useState(false);
 
   useEffect(() => {
-    if (inView) {
+    if (inView && !hasAnimated) {
       controls.start("visible");
-    } else {
-      controls.start("hidden");
+      setHasAnimated(true);
     }
-  }, [inView, controls]);
+  }, [inView, controls, hasAnimated]);
 
   useEffect(() => {
     if (!sectionInView) return;
@@ -61,7 +61,7 @@ const About = ({ theme }) => {
       <div className="container mx-auto px-4 py-16">
         <motion.div
           initial="hidden"
-          animate={controls}
+          animate={hasAnimated ? "visible" : "hidden"}
           variants={{
             hidden: {
               opacity: 0,
@@ -96,7 +96,7 @@ const About = ({ theme }) => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 items-center">
           <motion.div
             initial={{ opacity: 0, x: -50 }}
-            animate={controls}
+            animate={hasAnimated ? { opacity: 1, x: 0 } : { opacity: 0, x: -50 }}
             variants={{
               hidden: { opacity: 0, x: -50 },
               visible: { opacity: 1, x: 0 }
@@ -127,7 +127,7 @@ const About = ({ theme }) => {
               <motion.div
                 key={index}
                 initial={{ opacity: 0, y: 30 }}
-                animate={controls}
+                animate={hasAnimated ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
                 variants={{
                   hidden: { opacity: 0, y: 30 },
                   visible: { opacity: 1, y: 0 }

@@ -57,62 +57,55 @@ function App() {
 
   return (
     <div className={`relative font-sans ${theme === 'dark' ? 'bg-slate-900' : 'bg-gray-50'} text-white min-h-screen transition-colors duration-300`}>
-      <AnimatePresence mode="wait">
-        {loading ? (
-          <LoadingScreen key="loading" />
-        ) : (
-          <>
-            <CustomCursor />
-            <ParticleBackground theme={theme} />
-            <Navbar 
-              activeSection={activeSection} 
-              theme={theme} 
-              toggleTheme={toggleTheme}
-            />
-            <Sentry />
-            
-            <motion.main
-              className="relative z-10"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.5 }}
-            >
-              <Suspense fallback={<SectionLoader />}>
-                <section id="home" className="min-h-screen">
-                  <Hero setActiveSection={handleSetActiveSection} theme={theme} />
-                </section>
-                
-                <section id="about" className="min-h-screen">
-                  <About theme={theme} />
-                </section>
-                
-                <section id="education" className="min-h-screen">
-                  <Education theme={theme} />
-                </section>
-                
-                <section id="skills" className="min-h-screen">
-                  <Skills theme={theme} />
-                </section>
-                
-                <section id="projects" className="min-h-screen">
-                  <Projects theme={theme} />
-                </section>
-                
-                <section id="achievements" className="min-h-screen">
-                  <Achievements theme={theme} />
-                </section>
-                
-                <section id="contact" className="min-h-screen">
-                  <Contact theme={theme} />
-                </section>
+      {/* Remove AnimatePresence and motion.main for main content */}
+      {loading ? (
+        <LoadingScreen key="loading" />
+      ) : (
+        <>
+          <CustomCursor />
+          <ParticleBackground theme={theme} />
+          <Navbar 
+            activeSection={activeSection} 
+            theme={theme} 
+            toggleTheme={toggleTheme}
+          />
+          <Sentry />
 
-                <Footer theme={theme} />
-              </Suspense>
-            </motion.main>
-          </>
-        )}
-      </AnimatePresence>
+          <main className="relative z-10">
+            <Suspense fallback={<SectionLoader />}>
+              <section id="home" className="min-h-screen">
+                <Hero setActiveSection={handleSetActiveSection} theme={theme} />
+              </section>
+              
+              <section id="about" className="min-h-screen">
+                <About theme={theme} />
+              </section>
+              
+              <section id="education" className="min-h-screen">
+                <Education theme={theme} />
+              </section>
+              
+              <section id="skills" className="min-h-screen">
+                <Skills theme={theme} />
+              </section>
+              
+              <section id="projects" className="min-h-screen">
+                <Projects theme={theme} />
+              </section>
+              
+              <section id="achievements" className="min-h-screen">
+                <Achievements theme={theme} />
+              </section>
+              
+              <section id="contact" className="min-h-screen">
+                <Contact theme={theme} />
+              </section>
+
+              <Footer theme={theme} />
+            </Suspense>
+          </main>
+        </>
+      )}
     </div>
   );
 }

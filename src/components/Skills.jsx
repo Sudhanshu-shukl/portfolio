@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { Code, Database, Cloud, MonitorSmartphone, Brush, Brain } from 'lucide-react';
@@ -12,6 +12,13 @@ const Skills = () => {
   const [sectionRef, sectionInView] = useInView({
     threshold: 0.5,
   });
+  const [hasAnimated, setHasAnimated] = useState(false);
+
+  useEffect(() => {
+    if (inView && !hasAnimated) {
+      setHasAnimated(true);
+    }
+  }, [inView, hasAnimated]);
 
   useEffect(() => {
     if (!sectionInView) return;
@@ -71,7 +78,7 @@ const Skills = () => {
       <div className="container mx-auto px-4 py-16">
         <motion.div
           initial="hidden"
-          animate={inView ? "visible" : "hidden"}
+          animate={hasAnimated ? "visible" : "hidden"}
           variants={{
             hidden: { opacity: 0, y: 30 },
             visible: { 
@@ -97,7 +104,7 @@ const Skills = () => {
             <motion.div
               key={index}
               initial={{ opacity: 0, y: 50 }}
-              animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
+              animate={hasAnimated ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
               transition={{ duration: 0.5, delay: 0.1 * index }}
               className="holographic p-6 rounded-lg"
             >
@@ -113,7 +120,7 @@ const Skills = () => {
                   <motion.span
                     key={idx}
                     initial={{ scale: 0 }}
-                    animate={inView ? { scale: 1 } : { scale: 0 }}
+                    animate={hasAnimated ? { scale: 1 } : { scale: 0 }}
                     transition={{ duration: 0.3, delay: 0.3 + 0.05 * idx }}
                     className="tech-stack-item hover:bg-indigo-500/20 cursor-pointer"
                   >
@@ -127,7 +134,7 @@ const Skills = () => {
         
         <motion.div
           initial={{ opacity: 0, y: 30 }}
-          animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+          animate={hasAnimated ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
           transition={{ duration: 0.8, delay: 0.6 }}
           className="mt-16"
         >
@@ -138,7 +145,7 @@ const Skills = () => {
               <motion.div
                 key={index}
                 initial={{ x: -30, opacity: 0 }}
-                animate={inView ? { x: 0, opacity: 1 } : { x: -30, opacity: 0 }}
+                animate={hasAnimated ? { x: 0, opacity: 1 } : { x: -30, opacity: 0 }}
                 transition={{ duration: 0.5, delay: 0.7 + 0.1 * index }}
                 className="flex items-center"
               >

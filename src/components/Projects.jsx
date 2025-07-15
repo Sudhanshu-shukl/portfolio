@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { Clock, BookOpen, Bot } from 'lucide-react';
@@ -13,6 +13,13 @@ const Projects = () => {
   const [sectionRef, sectionInView] = useInView({
     threshold: 0.5,
   });
+  const [hasAnimated, setHasAnimated] = useState(false);
+
+  useEffect(() => {
+    if (inView && !hasAnimated) {
+      setHasAnimated(true);
+    }
+  }, [inView, hasAnimated]);
 
   useEffect(() => {
     if (!sectionInView) return;
@@ -54,7 +61,7 @@ const Projects = () => {
       <div className="container mx-auto px-4 py-16">
         <motion.div
           initial="hidden"
-          animate={inView ? "visible" : "hidden"}
+          animate={hasAnimated ? "visible" : "hidden"}
           variants={{
             hidden: { opacity: 0, y: 30 },
             visible: { 
@@ -90,7 +97,7 @@ const Projects = () => {
             >
               <motion.div
                 initial={{ opacity: 0, y: 50 }}
-                animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
+                animate={hasAnimated ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
                 transition={{ duration: 0.6, delay: 0.2 * index }}
                 className="h-full holographic overflow-hidden rounded-xl group"
               >

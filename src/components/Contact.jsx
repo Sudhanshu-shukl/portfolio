@@ -21,13 +21,13 @@ const Contact = () => {
   
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [hasAnimated, setHasAnimated] = useState(false);
 
   useEffect(() => {
-    if (!sectionInView) return;
-    // Update active section in parent component
-    const event = new CustomEvent('sectionInView', { detail: 'contact' });
-    window.dispatchEvent(event);
-  }, [sectionInView]);
+    if (inView && !hasAnimated) {
+      setHasAnimated(true);
+    }
+  }, [inView, hasAnimated]);
   
   const handleChange = (e) => {
     setFormState({
@@ -66,7 +66,7 @@ const Contact = () => {
       <div className="container mx-auto px-4 py-16">
         <motion.div
           initial="hidden"
-          animate={inView ? "visible" : "hidden"}
+          animate={hasAnimated ? "visible" : "hidden"}
           variants={{
             hidden: { opacity: 0, y: 30 },
             visible: { 
@@ -91,7 +91,7 @@ const Contact = () => {
           {/* Contact Info */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
-            animate={inView ? { opacity: 1, x: 0 } : { opacity: 0, x: -50 }}
+            animate={hasAnimated ? { opacity: 1, x: 0 } : { opacity: 0, x: -50 }}
             transition={{ duration: 0.8, delay: 0.2 }}
             className="holographic p-8 rounded-lg"
           >
@@ -149,7 +149,7 @@ const Contact = () => {
           {/* Contact Form */}
           <motion.div
             initial={{ opacity: 0, x: 50 }}
-            animate={inView ? { opacity: 1, x: 0 } : { opacity: 0, x: 50 }}
+            animate={hasAnimated ? { opacity: 1, x: 0 } : { opacity: 0, x: 50 }}
             transition={{ duration: 0.8, delay: 0.4 }}
             className="holographic p-8 rounded-lg"
           >
