@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Github, Linkedin, Mail } from 'lucide-react';
+import { Github, Linkedin, Mail, Instagram } from 'lucide-react';
 
 const Footer = () => {
   return (
@@ -58,6 +58,16 @@ const Footer = () => {
             aria-label="LinkedIn"
           >
             <Linkedin className="w-5 h-5" />
+          </a>
+          
+          <a 
+            href="https://instagram.com/sudh.sss" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="p-3 bg-slate-800 rounded-full hover:bg-slate-700 transition-colors duration-300"
+            aria-label="Instagram"
+          >
+            <Instagram className="w-5 h-5" />
           </a>
           
           <a 

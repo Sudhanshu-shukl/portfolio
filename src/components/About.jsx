@@ -54,7 +54,7 @@ const About = ({ theme }) => {
   return (
     <section
       ref={sectionRef}
-      className={`min-h-screen py-20 relative ${theme === 'dark' ? 'bg-slate-900' : 'bg-gray-50'
+      className={`min-h-screen py-20 relative ${theme === 'dark' ? 'bg-slate-900/50' : 'bg-gray-50/50'
         }`}
     >
       <div className="container mx-auto px-4 py-16">

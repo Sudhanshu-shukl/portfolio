@@ -1,7 +1,6 @@
 import React, { useEffect, useState, Suspense } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import LoadingScreen from './components/LoadingScreen';
-import CustomCursor from './components/CustomCursor';
 import ParticleBackground from './components/ParticleBackground';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
@@ -13,6 +12,7 @@ const About = React.lazy(() => import('./components/About'));
 const Education = React.lazy(() => import('./components/Education'));
 const Skills = React.lazy(() => import('./components/Skills'));
 const Projects = React.lazy(() => import('./components/Projects'));
+const Experience = React.lazy(() => import('./components/Experience'));
 const Achievements = React.lazy(() => import('./components/Achievements'));
 const Contact = React.lazy(() => import('./components/Contact'));
 
@@ -56,6 +56,7 @@ function App() {
       'education',
       'skills',
       'projects',
+      'experience',
       'achievements',
       'contact',
     ];
@@ -102,13 +103,12 @@ function App() {
   };
 
   return (
-    <div className={`relative font-sans ${theme === 'dark' ? 'bg-slate-900' : 'bg-gray-50'} text-white min-h-screen transition-colors duration-300`}>
+    <div className={`relative font-sans w-full overflow-x-hidden ${theme === 'dark' ? 'bg-slate-900' : 'bg-gray-50'} text-white min-h-screen transition-colors duration-300`}>
       {/* Remove AnimatePresence and motion.main for main content */}
       {loading ? (
         <LoadingScreen key="loading" />
       ) : (
         <>
-          <CustomCursor />
           <ParticleBackground theme={theme} />
           <Navbar 
             activeSection={activeSection} 
@@ -138,6 +138,10 @@ function App() {
               
               <section id="projects" className="min-h-screen">
                 <Projects theme={theme} />
+              </section>
+              
+              <section id="experience" className="min-h-screen">
+                <Experience theme={theme} />
               </section>
               
               <section id="achievements" className="min-h-screen">

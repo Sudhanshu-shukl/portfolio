@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import { Clock, BookOpen, Bot } from 'lucide-react';
+import { Clock, BookOpen, Bot, MessageCircle, Code, Database, MessageSquare } from 'lucide-react';
 import Tilt from 'react-parallax-tilt';
 
 const Projects = () => {
@@ -30,25 +30,32 @@ const Projects = () => {
 
   const projects = [
     {
-      icon: <Clock className="w-12 h-12 text-cyan-400" />,
-      title: "Time Tracker",
-      description: "An application for tracking time spent on different activities and projects, providing insights and analytics on productivity patterns.",
-      techStack: ["React", "Node.js", "Express", "MongoDB"],
+      icon: <MessageCircle className="w-12 h-12 text-cyan-400" />,
+      title: "MoodMate AI (Full-Stack AI Chatbot)",
+      description: "Built an offline, full-stack AI chatbot using Llama3, Flask, and ReactJS for mental wellness support. Supports four custom personalities—Sarcastic, Deep, Roaster, and Personal Best friend—for tailored user vibes. Runs fully locally without internet, ideal for privacy-first mental health convos.",
+      techStack: ["Llama3", "Flask", "ReactJS", "Python"],
       color: "from-purple-500 to-indigo-600"
     },
     {
-      icon: <BookOpen className="w-12 h-12 text-cyan-400" />,
-      title: "Digital Code Snippet Library",
-      description: "A platform for developers to store, organize and share code snippets with syntax highlighting and tagging functionality.",
-      techStack: ["JavaScript", "PHP", "MySQL", "Bootstrap"],
+      icon: <Code className="w-12 h-12 text-cyan-400" />,
+      title: "AI-Powered Code Review System",
+      description: "Developed an AI-driven code review system using Llama3 to identify bugs, security flaws, and code smells. Integrated with GitHub Actions for automated pull request reviews and issue tracking. Implemented real-time feedback on code quality with suggestions for improvement.",
+      techStack: ["Llama3", "GitHub Actions", "Python", "AI/ML"],
       color: "from-cyan-500 to-blue-600"
     },
     {
-      icon: <Bot className="w-12 h-12 text-cyan-400" />,
-      title: "ChatGPT-based AI Assistant",
-      description: "An AI-powered assistant that helps with various tasks including code generation, text analysis, and creative writing.",
-      techStack: ["Python", "OpenAI API", "Flask", "React"],
+      icon: <Database className="w-12 h-12 text-cyan-400" />,
+      title: "Serverless Data Warehouse with Real-Time ETL",
+      description: "Built a serverless, distributed data warehouse using AWS Lambda and Google Cloud Functions for real-time ETL. Integrated Presto for high-speed querying of big data and machine learning models for real-time insights. Enabled secure data access with IAM and automated data pipelines using Terraform.",
+      techStack: ["AWS Lambda", "Google Cloud", "Presto", "Terraform"],
       color: "from-teal-500 to-green-600"
+    },
+    {
+      icon: <MessageSquare className="w-12 h-12 text-cyan-400" />,
+      title: "Real-Time Chat Application with WebSockets",
+      description: "Built a real-time chat app using WebSockets for seamless communication. Developed with React.js, Node.js and Redis for message storage and session management. Implemented user authentication and message encryption for secure chats.",
+      techStack: ["React.js", "Node.js", "WebSockets", "Redis"],
+      color: "from-orange-500 to-red-600"
     }
   ];
 
@@ -81,7 +88,7 @@ const Projects = () => {
           <div className="h-0.5 w-24 md:w-32 bg-gradient-to-r from-cyan-500 to-fuchsia-500 mx-auto mb-8"></div>
         </motion.div>
         
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
           {projects.map((project, index) => (
             <Tilt
               key={index}

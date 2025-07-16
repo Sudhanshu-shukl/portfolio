@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import { Mail, Linkedin, Github, Send } from 'lucide-react';
+import { Mail, Linkedin, Github, Send, Instagram } from 'lucide-react';
 
 const Contact = () => {
   const [ref, inView] = useInView({
@@ -36,25 +36,40 @@ const Contact = () => {
     });
   };
   
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
     
-    // Simulate form submission
-    setTimeout(() => {
-      setIsSubmitting(false);
-      setIsSubmitted(true);
-      setFormState({
-        name: '',
-        email: '',
-        message: ''
+    try {
+      const response = await fetch('https://formspree.io/f/manjgokj', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formState),
       });
       
-      // Reset success message after 5 seconds
-      setTimeout(() => {
-        setIsSubmitted(false);
-      }, 5000);
-    }, 1500);
+      if (response.ok) {
+        setIsSubmitting(false);
+        setIsSubmitted(true);
+        setFormState({
+          name: '',
+          email: '',
+          message: ''
+        });
+        
+        // Reset success message after 5 seconds
+        setTimeout(() => {
+          setIsSubmitted(false);
+        }, 5000);
+      } else {
+        throw new Error('Failed to send message');
+      }
+    } catch (error) {
+      console.error('Error sending message:', error);
+      setIsSubmitting(false);
+      // You could add error state handling here if needed
+    }
   };
 
   return (
@@ -134,6 +149,17 @@ const Contact = () => {
                 </div>
                 <span>sudhs-shukla</span>
               </a>
+              
+              <a 
+                href="https://instagram.com/sudh.sss" 
+                target='_blank'
+                className="flex items-center gap-4 text-gray-300 hover:text-cyan-400 transition-colors duration-300"
+              >
+                <div className="p-3 bg-slate-800 rounded-lg">
+                  <Instagram className="w-6 h-6" />
+                </div>
+                <span>sudh.sss</span>
+              </a>
             </div>
             
             <div className="mt-12 relative">
@@ -167,7 +193,7 @@ const Contact = () => {
                 <p className="text-gray-300">Thank you for reaching out. I'll get back to you soon.</p>
               </motion.div>
             ) : (
-              <form action='https://formspree.io/f/manjgokj' method="post" className="space-y-6">
+              <form onSubmit={handleSubmit} className="space-y-6">
                 <div>
                   <label htmlFor="name" className="block text-gray-300 mb-2">Name</label>
                   <input

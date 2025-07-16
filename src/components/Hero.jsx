@@ -4,9 +4,22 @@ import { ChevronDown } from 'lucide-react';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import 'react-lazy-load-image-component/src/effects/blur.css';
 
+
 const Hero = ({ setActiveSection }) => {
   const [hasAnimated, setHasAnimated] = useState(false);
   const textRef = useRef(null);
+  
+  const handleDownload = () => {
+    // Direct download link from Google Drive
+    const downloadUrl = 'https://drive.google.com/uc?export=download&id=1MIkd47few2FckIT2-7_7177zPUwM-o4Q';
+    const link = document.createElement('a');
+    link.href = downloadUrl;
+    link.download = 'Sudhanshu_Resume.pdf';
+    link.target = '_blank';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
   
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -83,8 +96,8 @@ const Hero = ({ setActiveSection }) => {
   };
 
   return (
-    <div className="h-screen flex flex-col justify-center items-center relative px-4 overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-b from-slate-900 via-slate-900/80 to-slate-900 z-0"></div>
+    <div className="h-screen flex flex-col justify-center items-center relative px-4 overflow-hidden pt-16">
+      <div className="absolute inset-0 bg-slate-900 z-0"></div>
       
       <motion.div
         variants={container}
@@ -147,11 +160,24 @@ const Hero = ({ setActiveSection }) => {
         
         <motion.h1 
           variants={item}
-          className="text-5xl md:text-7xl font-bold mb-4 tracking-tighter hover:text-cyan-400 transition-colors duration-300"
+          className="text-5xl md:text-7xl font-bold mb-4 tracking-tighter group cursor-pointer relative"
           data-value="SUDHANSHU SHUKLA"
           ref={textRef}
         >
-          SUDHANSHU SHUKLA
+          <span className="relative inline-block">
+            <span className="absolute inset-0 bg-gradient-to-r from-cyan-500 via-purple-500 to-cyan-500 bg-clip-text text-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 animate-pulse">
+              SUDHANSHU SHUKLA
+            </span>
+            <span className="relative group-hover:animate-glitch-h">
+              SUDHANSHU SHUKLA
+            </span>
+          </span>
+          {/* Glitch effect lines on hover */}
+          <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
+            <div className="absolute top-1/4 left-0 w-full h-px bg-cyan-500/50 animate-glitch-h"></div>
+            <div className="absolute top-1/3 left-0 w-full h-px bg-purple-500/50 animate-glitch-h delay-100"></div>
+            <div className="absolute top-1/2 left-0 w-full h-px bg-white/50 animate-glitch-h delay-200"></div>
+          </div>
         </motion.h1>
         
         <motion.div 
@@ -168,41 +194,43 @@ const Hero = ({ setActiveSection }) => {
         
         <motion.div
           variants={item}
-          className="flex flex-wrap justify-center gap-4 mt-8"
+          className="flex flex-wrap justify-center gap-4 mt-8 relative z-20"
         >
-          <a
-            href="#about"
-            className="relative px-8 py-3 overflow-hidden group bg-gradient-to-r from-cyan-500 to-fuchsia-500 rounded-lg text-white font-medium shadow-lg"
+                    <a
+            href="#projects"
+            className="group relative px-8 py-3 bg-slate-800/60 backdrop-blur-md border border-white/20 rounded-xl text-white font-semibold overflow-hidden transition-all duration-500 hover:scale-105 hover:border-cyan-400 hover:shadow-xl hover:shadow-cyan-500/30 shadow-lg"
           >
-            <span className="absolute top-0 left-0 w-full h-full bg-white/10 transform -translate-x-full skew-x-12 group-hover:translate-x-0 transition-transform duration-700"></span>
-            <span className="relative">Explore My Work</span>
+            <div className="absolute inset-0 bg-gradient-to-r from-cyan-500/20 to-purple-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+            <div className="absolute inset-0 bg-gradient-to-r from-cyan-500/10 via-transparent to-purple-500/10 group-hover:animate-pulse"></div>
+            <span className="relative z-10">Explore My Work</span>
           </a>
           
           <a
             href="#contact"
-            className="px-8 py-3 border border-white/20 rounded-lg text-white hover:bg-white/5 transition-colors duration-300"
+            className="group relative px-8 py-3 bg-slate-800/60 backdrop-blur-md border border-white/20 rounded-xl text-white font-semibold overflow-hidden transition-all duration-500 hover:scale-105 hover:border-cyan-400 hover:shadow-xl hover:shadow-cyan-500/30 shadow-lg"
           >
-            Get In Touch
+            <div className="absolute inset-0 bg-gradient-to-r from-cyan-500/20 to-purple-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+            <div className="absolute inset-0 bg-gradient-to-r from-cyan-500/10 via-transparent to-purple-500/10 group-hover:animate-pulse"></div>
+            <span className="relative z-10">Get In Touch</span>
           </a>
+          
+          <button
+            onClick={handleDownload}
+            className="group relative px-8 py-3 bg-slate-800/60 backdrop-blur-md border border-white/20 rounded-xl text-white font-semibold overflow-hidden transition-all duration-500 hover:scale-105 hover:border-cyan-400 hover:shadow-xl hover:shadow-cyan-500/30 shadow-lg flex items-center gap-2"
+          >
+            <div className="absolute inset-0 bg-gradient-to-r from-cyan-500/20 to-purple-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+            <div className="absolute inset-0 bg-gradient-to-r from-cyan-500/10 via-transparent to-purple-500/10 group-hover:animate-pulse"></div>
+            <span className="relative z-10 flex items-center gap-2">
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+              </svg>
+              Download Resume
+            </span>
+          </button>
         </motion.div>
       </motion.div>
       
-      <motion.div
-        initial={{ opacity: 0, y: 10 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ 
-          duration: 1, 
-          delay: 2.2,
-          repeat: Infinity,
-          repeatType: "reverse",
-          repeatDelay: 0.2
-        }}
-        className="absolute bottom-10 left-1/2 transform -translate-x-1/2"
-      >
-        <a href="#about" aria-label="Scroll down">
-          <ChevronDown className="w-8 h-8 text-white/50 animate-bounce" />
-        </a>
-      </motion.div>
+
     </div>
   );
 };

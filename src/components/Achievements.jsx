@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import { Trophy, Award, Target } from 'lucide-react';
+import { Trophy, Award, Target, Zap, Users, Code, Star, TrendingUp } from 'lucide-react';
 
 const Achievements = () => {
   const [ref, inView] = useInView({
@@ -32,6 +32,31 @@ const Achievements = () => {
       icon: <Trophy className="w-12 h-12 text-yellow-500" />,
       title: "Chess Rating: 1800",
       description: "Achieved a competitive chess rating of 1800, demonstrating strategic thinking and planning abilities."
+    },
+    {
+      icon: <Zap className="w-12 h-12 text-orange-500" />,
+      title: "3x Hackathon Winner",
+      description: "Secured victories in multiple hackathons, showcasing rapid prototyping and innovative problem-solving skills."
+    },
+    {
+      icon: <Star className="w-12 h-12 text-purple-500" />,
+      title: "HackIndia 2025 Finalist",
+      description: "Reached the finals of HackIndia 2025, one of India's premier hackathon competitions."
+    },
+    {
+      icon: <Users className="w-12 h-12 text-blue-500" />,
+      title: "Campus Ambassador",
+      description: "Selected as Campus Ambassador for multiple tech and ed-tech platforms, demonstrating leadership and communication skills."
+    },
+    {
+      icon: <Code className="w-12 h-12 text-green-500" />,
+      title: "Open Source Contributor",
+      description: "Regularly contribute to open-source projects and maintain active personal repositories on GitHub."
+    },
+    {
+      icon: <TrendingUp className="w-12 h-12 text-orange-500" />,
+      title: "LeetCode Contest Rating: 1697",
+      description: "Global Rank: Top 13% (89,855 / 694,599) - Demonstrating strong problem-solving skills and algorithmic thinking."
     }
   ];
 
@@ -75,7 +100,7 @@ const Achievements = () => {
             >
               {/* Achievement content */}
               <div className="flex flex-col md:flex-row items-center md:items-start gap-6">
-                <div className="p-5 bg-gradient-to-br from-yellow-400 to-amber-600 rounded-lg text-white">
+                <div className="p-4 bg-slate-800/50 backdrop-blur-sm border border-white/10 rounded-xl">
                   {achievement.icon}
                 </div>
                 
