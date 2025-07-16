@@ -45,8 +45,7 @@ const Education = () => {
   ];
 
   return (
-    <section 
-      id="education-section" 
+    <section
       ref={sectionRef}
       className="min-h-screen py-20 relative bg-slate-900/50"
     >

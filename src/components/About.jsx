@@ -53,7 +53,6 @@ const About = ({ theme }) => {
 
   return (
     <section
-      id="about-section"
       ref={sectionRef}
       className={`min-h-screen py-20 relative ${theme === 'dark' ? 'bg-slate-900' : 'bg-gray-50'
         }`}

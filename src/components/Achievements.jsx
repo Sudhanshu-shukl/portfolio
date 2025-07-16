@@ -36,10 +36,9 @@ const Achievements = () => {
   ];
 
   return (
-    <section 
-      id="achievements-section" 
+    <section
       ref={sectionRef}
-      className="min-h-screen py-20 relative"
+      className="min-h-screen py-20 relative bg-slate-900/50"
     >
       <div className="container mx-auto px-4 py-16">
         <motion.div

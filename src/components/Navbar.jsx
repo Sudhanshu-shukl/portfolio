@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
 
-const Navbar = ({ activeSection }) => {
+const Navbar = ({ activeSection, setActiveSection, theme, toggleTheme }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   
@@ -62,6 +62,7 @@ const Navbar = ({ activeSection }) => {
                     ? 'text-cyan-400' 
                     : 'text-white/80'
                 }`}
+                onClick={() => setActiveSection(link.id)}
               >
                 {link.text}
                 {activeSection === link.id && (
@@ -112,7 +113,10 @@ const Navbar = ({ activeSection }) => {
                       ? 'bg-indigo-500/20 text-cyan-400' 
                       : 'hover:bg-slate-700/50'
                   }`}
-                  onClick={() => setIsMenuOpen(false)}
+                  onClick={() => {
+                    setActiveSection(link.id);
+                    setIsMenuOpen(false);
+                  }}
                 >
                   {link.text}
                 </a>

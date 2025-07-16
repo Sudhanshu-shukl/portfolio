@@ -58,8 +58,7 @@ const Contact = () => {
   };
 
   return (
-    <section 
-      id="contact-section" 
+    <section
       ref={sectionRef}
       className="min-h-screen py-20 relative bg-slate-900/50"
     >

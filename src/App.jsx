@@ -47,6 +47,52 @@ function App() {
     }
   }, [loading]);
 
+  // Intersection Observer for active section
+  useEffect(() => {
+    if (loading) return;
+    const sectionIds = [
+      'home',
+      'about',
+      'education',
+      'skills',
+      'projects',
+      'achievements',
+      'contact',
+    ];
+    let observer;
+    let timeoutId;
+    function setupObserver() {
+      const sections = sectionIds.map(id => document.getElementById(id));
+      if (sections.some(section => !section)) {
+        // If any section is missing, try again shortly
+        timeoutId = setTimeout(setupObserver, 100);
+        return;
+      }
+      observer = new window.IntersectionObserver((entries) => {
+        console.log('IntersectionObserver entries:', entries.map(e => ({id: e.target.id, isIntersecting: e.isIntersecting, top: e.boundingClientRect.top})));
+        const visible = entries.filter(entry => entry.isIntersecting);
+        if (visible.length > 0) {
+          const closest = visible.reduce((prev, curr) => {
+            return Math.abs(curr.boundingClientRect.top) < Math.abs(prev.boundingClientRect.top) ? curr : prev;
+          });
+          setActiveSection(closest.target.id);
+        }
+      }, {
+        root: null,
+        rootMargin: '0px',
+        threshold: 0,
+      });
+      sections.forEach(section => {
+        if (section) observer.observe(section);
+      });
+    }
+    setupObserver();
+    return () => {
+      if (observer) observer.disconnect();
+      if (timeoutId) clearTimeout(timeoutId);
+    };
+  }, [loading]);
+
   const handleSetActiveSection = (section) => {
     setActiveSection(section);
   };
@@ -66,6 +112,7 @@ function App() {
           <ParticleBackground theme={theme} />
           <Navbar 
             activeSection={activeSection} 
+            setActiveSection={handleSetActiveSection}
             theme={theme} 
             toggleTheme={toggleTheme}
           />

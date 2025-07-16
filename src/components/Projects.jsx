@@ -54,7 +54,6 @@ const Projects = () => {
 
   return (
     <section 
-      id="projects-section" 
       ref={sectionRef}
       className="min-h-screen py-20 relative bg-slate-900/50"
     >
