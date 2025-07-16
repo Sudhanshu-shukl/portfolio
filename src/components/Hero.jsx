@@ -11,7 +11,7 @@ const Hero = ({ setActiveSection }) => {
   
   const handleDownload = () => {
     // Direct download link from Google Drive
-    const downloadUrl = 'https://drive.google.com/uc?export=download&id=1MIkd47few2FckIT2-7_7177zPUwM-o4Q';
+    const downloadUrl = 'https://drive.google.com/file/d/1R8GabtOQ7JDsV2kWA2kYOt8z_p1vm7iQ/view?usp=sharing';
     const link = document.createElement('a');
     link.href = downloadUrl;
     link.download = 'Sudhanshu_Resume.pdf';

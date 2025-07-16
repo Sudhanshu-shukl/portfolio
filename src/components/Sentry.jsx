@@ -33,53 +33,55 @@ const fuse = new Fuse(qaData, {
 
 // === Helpers ===
 const normalizeInput = (input) => input.trim().toLowerCase();
-const findAnswer = (question) => {
-  const cleaned = normalizeInput(question);
+
+// === Enhanced Local Responses ===
+function getLocalResponse(userMessage) {
+  const cleaned = normalizeInput(userMessage);
+  
+  // Check fallback responses first
   if (fallbackMap[cleaned]) return fallbackMap[cleaned];
+  
+  // Check Q&A data
   if (cleaned.length >= 3) {
     const result = fuse.search(cleaned);
     if (result.length > 0) return result[0].item.a;
   }
-  return null;
-};
-
-// === Groq API Call ===
-async function fetchGroqChat(userMessage) {
-  try {
-    const response = await fetch("https://api.groq.com/openai/v1/chat/completions", {
-      method: "POST",
-      headers: {
-        "Authorization": `Bearer ${import.meta.env.VITE_GROQ_API_KEY}`,
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        model: "mixtral-8x7b-32768",
-        messages: [
-          {
-            role: "system",
-            content: "You are Sentry, a sarcastic and helpful AI assistant on Sudhanshu's portfolio site. Be witty, chill, and fun.",
-          },
-          {
-            role: "user",
-            content: userMessage,
-          }
-        ],
-        temperature: 0.7,
-        max_tokens: 1024,
-        top_p: 1,
-        stream: false
-      })
-    });
-
-    const data = await response.json();
-    if (data?.choices?.[0]?.message?.content) {
-      return data.choices[0].message.content.trim();
+  
+  // Enhanced witty responses for common questions
+  const enhancedResponses = {
+    'skills': "Sudhanshu's got skills for days! 🚀 Python, React, Node.js, AI/ML, you name it. Check out the Skills section for the full tech stack.",
+    'projects': "Oh, you want to see the good stuff? Check out MoodMate AI, the code review system, and more in the Projects section. Real projects, not just 'Hello World' 😏",
+    'contact': "Want to connect? Hit up the Contact section or slide into those DMs. LinkedIn, GitHub, Instagram - take your pick!",
+    'experience': "Two solid internships under the belt! Check the Experience section for the juicy details.",
+    'education': "Currently at VIT Bhopal, studying Computer Science. The education section has all the deets.",
+    'achievements': "Chess rating 1800, hackathon wins, LeetCode top 13% - this guy's got receipts! Check the Achievements section.",
+    'resume': "Want the full story? Download the resume from the Hero section. It's got all the professional tea ☕",
+    'github': "Check out the GitHub link in the footer or contact section. Real code, not just empty repos 😅",
+    'linkedin': "Professional networking game strong! LinkedIn link is in the footer and contact section.",
+    'instagram': "For the personal side, hit up Instagram. Link's in the footer and contact section.",
+    'about': "Sudhanshu's an AI/ML engineer who loves chess, coding, and solving problems. Check the About section for the full story.",
+    'who': "Sudhanshu Shukla - AI/ML Engineer, problem solver, chess player, and your friendly neighborhood developer. Check the About section!",
+    'what': "This is Sudhanshu's portfolio site! Explore the sections to learn about his skills, projects, and experience.",
+    'help': "I'm here to help! Ask me about Sudhanshu's skills, projects, experience, achievements, or just chat. I'm your friendly guide through this portfolio! 😎"
+  };
+  
+  // Check for keywords in the message
+  for (const [keyword, response] of Object.entries(enhancedResponses)) {
+    if (cleaned.includes(keyword)) {
+      return response;
     }
-    return "Im Sorry but I'm not a real AI, I'm just a fun assistant to help you explore Sudhanshu's portfolio. so you can ask me about Sudhanshu's skills, projects, contact info, or anything about Sudhanshu.";
-  } catch (error) {
-    console.error("Groq API error:", error);
-    return "⚠️ Brain offline. Try again in a bit.";
   }
+  
+  // Default witty response
+  const defaultResponses = [
+    "Interesting question! 🤔 Check out the different sections of this portfolio to learn more about Sudhanshu.",
+    "Hmm, let me think... Actually, just explore the sections above. I'm just here for moral support! 😅",
+    "That's a good one! The portfolio sections have all the answers you're looking for.",
+    "Ask me about Sudhanshu's skills, projects, or experience. I'm your friendly guide! 🚀",
+    "Not sure about that, but I can help you navigate this portfolio. What would you like to know?"
+  ];
+  
+  return defaultResponses[Math.floor(Math.random() * defaultResponses.length)];
 }
 
 const Sentry = () => {
@@ -101,8 +103,7 @@ const Sentry = () => {
     setIsTyping(true);
     setMessages(prev => [...prev, { text: '', sender: 'sentry' }]);
 
-    let reply = findAnswer(cleanedInput);
-    if (!reply) reply = await fetchGroqChat(cleanedInput);
+    let reply = getLocalResponse(cleanedInput);
 
     // Typing animation
     let i = 0;
