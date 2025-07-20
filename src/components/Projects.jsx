@@ -14,6 +14,8 @@ const Projects = () => {
     threshold: 0.5,
   });
   const [hasAnimated, setHasAnimated] = useState(false);
+  const [modalOpen, setModalOpen] = useState(false);
+  const [modalMessage, setModalMessage] = useState("");
 
   useEffect(() => {
     if (inView && !hasAnimated) {
@@ -30,32 +32,44 @@ const Projects = () => {
 
   const projects = [
     {
-      icon: <MessageCircle className="w-12 h-12 text-cyan-400" />,
+      icon: <MessageCircle className="w-12 h-12 text-cyan-400" />, 
       title: "MoodMate AI (Full-Stack AI Chatbot)",
       description: "Built an offline, full-stack AI chatbot using Llama3, Flask, and ReactJS for mental wellness support. Supports four custom personalities—Sarcastic, Deep, Roaster, and Personal Best friend—for tailored user vibes. Runs fully locally without internet, ideal for privacy-first mental health convos.",
       techStack: ["Llama3", "Flask", "ReactJS", "Python"],
-      color: "from-purple-500 to-indigo-600"
+      color: "from-purple-500 to-indigo-600",
+      liveDemo: "https://sudhanshu-shukl.github.io/MoodMate",
+      github: "https://github.com/sudhanshu-shukl/moodmate",
+      completed: true
     },
     {
       icon: <Code className="w-12 h-12 text-cyan-400" />,
       title: "AI-Powered Code Review System",
       description: "Developed an AI-driven code review system using Llama3 to identify bugs, security flaws, and code smells. Integrated with GitHub Actions for automated pull request reviews and issue tracking. Implemented real-time feedback on code quality with suggestions for improvement.",
       techStack: ["Llama3", "GitHub Actions", "Python", "AI/ML"],
-      color: "from-cyan-500 to-blue-600"
+      color: "from-cyan-500 to-blue-600",
+      liveDemo: "#",
+      github: "https://github.com/sudhanshu-shukl/code-review",
+      completed: false
     },
     {
       icon: <Database className="w-12 h-12 text-cyan-400" />,
       title: "Serverless Data Warehouse with Real-Time ETL",
       description: "Built a serverless, distributed data warehouse using AWS Lambda and Google Cloud Functions for real-time ETL. Integrated Presto for high-speed querying of big data and machine learning models for real-time insights. Enabled secure data access with IAM and automated data pipelines using Terraform.",
       techStack: ["AWS Lambda", "Google Cloud", "Presto", "Terraform"],
-      color: "from-teal-500 to-green-600"
+      color: "from-teal-500 to-green-600",
+      liveDemo: "#",
+      github: "https://github.com/sudhanshu-shukl/data-warehouse",
+      completed: false
     },
     {
       icon: <MessageSquare className="w-12 h-12 text-cyan-400" />,
       title: "Real-Time Chat Application with WebSockets",
       description: "Built a real-time chat app using WebSockets for seamless communication. Developed with React.js, Node.js and Redis for message storage and session management. Implemented user authentication and message encryption for secure chats.",
       techStack: ["React.js", "Node.js", "WebSockets", "Redis"],
-      color: "from-orange-500 to-red-600"
+      color: "from-orange-500 to-red-600",
+      liveDemo: "#",
+      github: "https://github.com/sudhanshu-shukl/chat-app",
+      completed: false
     }
   ];
 
@@ -130,15 +144,62 @@ const Projects = () => {
                   <h3 className="text-2xl font-bold mb-3 mt-8">{project.title}</h3>
                   <p className="text-gray-300 mb-6">{project.description}</p>
                   
-                  <div className="flex flex-wrap gap-2 mt-auto">
-                    {project.techStack.map((tech, idx) => (
-                      <span
-                        key={idx}
-                        className="px-3 py-1 text-xs rounded-full bg-slate-800 text-gray-300"
+                  <div className="flex flex-wrap gap-2 mt-auto items-center justify-between">
+                    <div className="flex flex-wrap gap-2">
+                      {project.techStack.map((tech, idx) => (
+                        <span
+                          key={idx}
+                          className="px-3 py-1 text-xs rounded-full bg-slate-800 text-gray-300"
+                        >
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
+                    {/* Glassmorphism buttons for Live Demo and GitHub */}
+                    <div className="flex gap-3 ml-2 mt-2 md:mt-0">
+                      {project.completed ? (
+                        <a
+                          href={project.liveDemo}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/20 backdrop-blur-md text-cyan-200 font-semibold shadow-lg hover:bg-cyan-400/30 hover:text-white transition-all duration-200 border border-cyan-300/20"
+                        >
+                          <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                            <path d="M18 13v6a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+                            <polyline points="15 3 21 3 21 9" />
+                            <line x1="10" y1="14" x2="21" y2="3" />
+                          </svg>
+                          Live Demo
+                        </a>
+                      ) : (
+                        <button
+                          type="button"
+                          onClick={() => {
+                            setModalMessage('Live demo for this project is under progress. Please check back soon!');
+                            setModalOpen(true);
+                          }}
+                          className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/20 backdrop-blur-md text-cyan-200 font-semibold shadow-lg hover:bg-cyan-400/30 hover:text-white transition-all duration-200 border border-cyan-300/20 focus:outline-none"
+                        >
+                          <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                            <path d="M18 13v6a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+                            <polyline points="15 3 21 3 21 9" />
+                            <line x1="10" y1="14" x2="21" y2="3" />
+                          </svg>
+                          Live Demo
+                        </button>
+                      )}
+                      <a
+                        href={project.github}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/20 backdrop-blur-md text-gray-200 font-semibold shadow-lg hover:bg-gray-700/40 hover:text-white transition-all duration-200 border border-gray-300/20"
                       >
-                        {tech}
-                      </span>
-                    ))}
+                        <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                          <path d="M12 .5C5.73.5.5 5.74.5 12.02c0 5.1 3.29 9.43 7.86 10.96.58.11.79-.25.79-.56 0-.28-.01-1.02-.02-2-3.2.7-3.88-1.54-3.88-1.54-.53-1.34-1.3-1.7-1.3-1.7-1.06-.72.08-.71.08-.71 1.17.08 1.78 1.2 1.78 1.2 1.04 1.78 2.73 1.27 3.4.97.11-.75.41-1.27.74-1.56-2.55-.29-5.23-1.28-5.23-5.7 0-1.26.45-2.29 1.19-3.1-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11.1 11.1 0 0 1 2.9-.39c.98 0 1.97.13 2.9.39 2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.84 1.19 3.1 0 4.43-2.69 5.41-5.25 5.7.42.36.79 1.09.79 2.2 0 1.59-.01 2.87-.01 3.26 0 .31.21.68.8.56C20.71 21.45 24 17.12 24 12.02 24 5.74 18.27.5 12 .5z"/>
+                        </svg>
+                        GitHub
+                      </a>
+                    </div>
                   </div>
                 </div>
                 
@@ -151,7 +212,7 @@ const Projects = () => {
         
         <motion.div
           initial={{ opacity: 0 }}
-          animate={inView ? { opacity: 1 } : { opacity: 0 }}
+          animate={{ opacity: 1 }}
           transition={{ duration: 1, delay: 0.8 }}
           className="mt-12 text-center"
         >
@@ -163,6 +224,22 @@ const Projects = () => {
           </a>
         </motion.div>
       </div>
+
+      {/* Modal for under progress message */}
+      {modalOpen && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40">
+          <div className="bg-slate-900 rounded-xl p-8 shadow-2xl max-w-xs w-full text-center border border-cyan-400/30">
+            <div className="mb-4 text-cyan-300 text-lg font-semibold">🚧 Under Progress</div>
+            <div className="mb-6 text-gray-200">{modalMessage}</div>
+            <button
+              onClick={() => setModalOpen(false)}
+              className="px-6 py-2 rounded-full bg-cyan-600 text-white font-semibold shadow hover:bg-cyan-700 transition-all duration-200"
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      )}
     </section>
   );
 };
