@@ -29,8 +29,8 @@ const Experience = ({ theme }) => {
   const experiences = [
     {
       logo: (
-        <div className="w-12 h-12 rounded-full bg-gradient-to-r from-red-500 to-red-600 flex items-center justify-center">
-          <div className="w-8 h-8 rounded-full bg-white"></div>
+        <div className="rounded-full bg-gradient-to-r flex items-center justify-center">
+          <img src="public/scholar.png" className="w-12 h-12 "/>
         </div>
       ),
       title: "Summer Intern",
@@ -48,12 +48,12 @@ const Experience = ({ theme }) => {
         "Making the frontend beautiful, interactive, and heck efficient"
       ],
       closing: "Still waiting to get fired. Until then... let's build.",
-      skills: ["AngularJS", "Tailwind CSS", "ReactJS"]
+      skills: ["AngularJS", "Tailwind CSS", "ReactJS","NextJS"]
     },
     {
       logo: (
-        <div className="w-12 h-12 bg-slate-800 rounded-lg flex items-center justify-center">
-          <span className="text-white text-xs font-bold">INFERA</span>
+        <div className="rounded-lg flex items-center justify-center">
+          <img src="public/Infera.jpg" className="w-12 h-12 rounded-2xl"/>
         </div>
       ),
       title: "SDE Intern",
