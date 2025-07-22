@@ -30,7 +30,7 @@ const Experience = ({ theme }) => {
     {
       logo: (
         <div className="rounded-full bg-gradient-to-r flex items-center justify-center">
-          <img src="public/scholar.png" className="w-12 h-12 "/>
+          <img src="Scholar.png" className="w-12 h-12 "/>
         </div>
       ),
       title: "Summer Intern",
@@ -53,7 +53,7 @@ const Experience = ({ theme }) => {
     {
       logo: (
         <div className="rounded-lg flex items-center justify-center">
-          <img src="public/Infera.jpg" className="w-12 h-12 rounded-2xl"/>
+          <img src="Infera.jpg" className="w-12 h-12 rounded-2xl"/>
         </div>
       ),
       title: "SDE Intern",
