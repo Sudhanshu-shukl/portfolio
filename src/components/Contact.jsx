@@ -22,6 +22,7 @@ const Contact = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [hasAnimated, setHasAnimated] = useState(false);
+  const [emailError, setEmailError] = useState('');
 
   useEffect(() => {
     if (inView && !hasAnimated) {
@@ -29,15 +30,32 @@ const Contact = () => {
     }
   }, [inView, hasAnimated]);
   
+  const validateEmail = (email) => {
+    const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return re.test(email);
+  };
+  
   const handleChange = (e) => {
     setFormState({
       ...formState,
       [e.target.name]: e.target.value
     });
+    if (e.target.name === 'email') {
+      if (!validateEmail(e.target.value)) {
+        setEmailError('Please enter a valid email address.');
+      } else {
+        setEmailError('');
+      }
+    }
   };
   
   const handleSubmit = async (e) => {
     e.preventDefault();
+    // Validate email before submitting
+    if (!validateEmail(formState.email)) {
+      setEmailError('Please enter a valid email address.');
+      return;
+    }
     setIsSubmitting(true);
     
     try {
@@ -218,8 +236,11 @@ const Contact = () => {
                     onChange={handleChange}
                     placeholder="Your email"
                     required
-                    className="w-full p-3 bg-slate-800/50 border border-slate-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-500/50 focus:border-transparent transition-all duration-300"
+                    className={`w-full p-3 bg-slate-800/50 border ${emailError ? 'border-red-500' : 'border-slate-700'} rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-500/50 focus:border-transparent transition-all duration-300`}
                   />
+                  {emailError && (
+                    <p className="text-red-500 text-sm mt-1">{emailError}</p>
+                  )}
                 </div>
                 
                 <div>

@@ -31,32 +31,58 @@ const Skills = () => {
     {
       icon: <Code className="w-8 h-8 text-cyan-400" />,
       title: "Programming Languages",
-      skills: ["C", "C++", "Java", "Python", "PHP", "JavaScript"],
+      skills: [
+        { name: "C", proficiency: 70 },
+        { name: "C++", proficiency: 75 },
+        { name: "Java", proficiency: 80 },
+        { name: "Python", proficiency: 85 },
+        { name: "PHP", proficiency: 60 },
+        { name: "JavaScript", proficiency: 90 },
+      ],
     },
     {
       icon: <MonitorSmartphone className="w-8 h-8 text-cyan-400" />,
       title: "Web Development",
-      skills: ["HTML", "CSS", "JavaScript", "ReactJS"],
+      skills: [
+        { name: "HTML", proficiency: 95 },
+        { name: "CSS", proficiency: 90 },
+        { name: "JavaScript", proficiency: 90 },
+        { name: "ReactJS", proficiency: 85 },
+        { name: "Next.js", proficiency: 80 },
+      ],
     },
     {
       icon: <Database className="w-8 h-8 text-cyan-400" />,
       title: "Database Management",
-      skills: ["SQL", "Database Design", "Query Optimization"],
+      skills: [
+        { name: "SQL", proficiency: 80 },
+        { name: "Database Design", proficiency: 75 },
+        { name: "Query Optimization", proficiency: 70 },
+      ],
     },
     {
       icon: <Cloud className="w-8 h-8 text-cyan-400" />,
       title: "Cloud Computing",
-      skills: ["Cloud Architecture", "Service Deployment"],
+      skills: [
+        { name: "Cloud Architecture", proficiency: 65 },
+        { name: "Service Deployment", proficiency: 70 },
+      ],
     },
     {
       icon: <Brain className="w-8 h-8 text-cyan-400" />,
       title: "Machine Learning",
-      skills: ["Data Analysis", "Model Training", "Algorithm Design"],
+      skills: [
+        { name: "Data Analysis", proficiency: 75 },
+        { name: "Model Training", proficiency: 70 },
+        { name: "Algorithm Design", proficiency: 65 },
+      ],
     },
     {
       icon: <Brush className="w-8 h-8 text-cyan-400" />,
       title: "Design Tools",
-      skills: ["Adobe Photoshop"],
+      skills: [
+        { name: "Adobe Photoshop", proficiency: 60 },
+      ],
     },
   ];
 
@@ -113,18 +139,21 @@ const Skills = () => {
                 </div>
                 <h3 className="text-xl font-bold">{category.title}</h3>
               </div>
-              
-              <div className="flex flex-wrap gap-3">
+              <div className="space-y-4">
                 {category.skills.map((skill, idx) => (
-                  <motion.span
-                    key={idx}
-                    initial={{ scale: 0 }}
-                    animate={hasAnimated ? { scale: 1 } : { scale: 0 }}
-                    transition={{ duration: 0.3, delay: 0.3 + 0.05 * idx }}
-                    className="tech-stack-item hover:bg-indigo-500/20 cursor-pointer"
-                  >
-                    {skill}
-                  </motion.span>
+                  <div key={idx} className="mb-2">
+                    <div className="flex justify-between mb-1">
+                      <span className="text-gray-200 font-medium">{skill.name}</span>
+                      <span className="text-cyan-400 font-semibold">{skill.proficiency}%</span>
+                    </div>
+                    <motion.div
+                      initial={{ width: 0 }}
+                      animate={hasAnimated ? { width: `${skill.proficiency}%` } : { width: 0 }}
+                      transition={{ duration: 1, delay: 0.2 + 0.05 * idx }}
+                      className="h-3 rounded-lg bg-gradient-to-r from-cyan-500 to-fuchsia-500 shadow-md"
+                      style={{ maxWidth: '100%' }}
+                    />
+                  </div>
                 ))}
               </div>
             </motion.div>
