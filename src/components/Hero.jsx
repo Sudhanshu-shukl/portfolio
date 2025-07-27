@@ -97,7 +97,7 @@ const Hero = ({ setActiveSection }) => {
 
   return (
     <div className="h-screen flex flex-col justify-center items-center relative px-4 overflow-hidden pt-16">
-      <div className="absolute inset-0 bg-slate-900 z-0"></div>
+      <div className="absolute inset-0"></div>
       
       <motion.div
         variants={container}
