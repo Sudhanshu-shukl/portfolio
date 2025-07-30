@@ -30,8 +30,8 @@ const Achievements = () => {
   const achievements = [
     {
       icon: <Trophy className="w-12 h-12 text-yellow-500" />,
-      title: "Chess Rating: 1800",
-      description: "Achieved a competitive chess rating of 1800, demonstrating strategic thinking and planning abilities."
+      title: "Chess Rating: 1835+",
+      description: "Achieved a competitive chess rating of 1800+, demonstrating strategic thinking and planning abilities."
     },
     {
       icon: <Zap className="w-12 h-12 text-orange-500" />,
@@ -41,7 +41,7 @@ const Achievements = () => {
     {
       icon: <Star className="w-12 h-12 text-purple-500" />,
       title: "HackIndia 2025 Finalist",
-      description: "Reached the finals of HackIndia 2025, one of India's premier hackathon competitions."
+      description: "Reached the finals of HackIndia 2025, one of India's premier Web3 hackathon competition."
     },
     {
       icon: <Users className="w-12 h-12 text-blue-500" />,

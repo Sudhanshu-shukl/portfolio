@@ -22,7 +22,7 @@ const Skills = () => {
 
   useEffect(() => {
     if (!sectionInView) return;
-    // Update active section in parent component
+    // Ye hai to update active section in parent component
     const event = new CustomEvent('sectionInView', { detail: 'skills' });
     window.dispatchEvent(event);
   }, [sectionInView]);

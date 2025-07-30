@@ -51,7 +51,6 @@ const Contact = () => {
   
   const handleSubmit = async (e) => {
     e.preventDefault();
-    // Validate email before submitting
     if (!validateEmail(formState.email)) {
       setEmailError('Please enter a valid email address.');
       return;
@@ -76,17 +75,17 @@ const Contact = () => {
           message: ''
         });
         
-        // Reset success message after 5 seconds
+        // Reset success message after 1 seconds
         setTimeout(() => {
           setIsSubmitted(false);
-        }, 5000);
+        }, 1000);
       } else {
         throw new Error('Failed to send message');
       }
     } catch (error) {
       console.error('Error sending message:', error);
       setIsSubmitting(false);
-      // You could add error state handling here if needed
+      // Yaha pe error handling state daal dena
     }
   };
 

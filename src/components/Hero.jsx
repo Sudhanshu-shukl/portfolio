@@ -196,7 +196,7 @@ const Hero = ({ setActiveSection }) => {
           variants={item}
           className="flex flex-wrap justify-center gap-4 mt-8 relative z-20"
         >
-                    <a
+          <a
             href="#projects"
             className="group relative px-8 py-3 bg-slate-800/60 backdrop-blur-md border border-white/20 rounded-xl text-white font-semibold overflow-hidden transition-all duration-500 hover:scale-105 hover:border-cyan-400 hover:shadow-xl hover:shadow-cyan-500/30 shadow-lg"
           >
@@ -226,7 +226,16 @@ const Hero = ({ setActiveSection }) => {
               </svg>
               Download Resume
             </span>
-          </button>
+            </button>
+          <a
+            href="https://github.com/sudhanshu-shukl/Portfolio" target = "_blank"
+            className="group relative px-8 py-3 bg-slate-800/60 backdrop-blur-md border border-white/20 rounded-xl text-white font-semibold overflow-hidden transition-all duration-500 hover:scale-105 hover:border-cyan-400 hover:shadow-xl hover:shadow-cyan-500/30 shadow-lg"
+          >
+            <div className="absolute inset-0 bg-gradient-to-r from-cyan-500/20 to-purple-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+            <div className="absolute inset-0 bg-gradient-to-r from-cyan-500/10 via-transparent to-purple-500/10 group-hover:animate-pulse"></div>
+            <span className="relative z-10">Source Code</span>
+          </a>
+
         </motion.div>
       </motion.div>
       
