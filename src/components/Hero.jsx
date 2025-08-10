@@ -10,7 +10,6 @@ const Hero = ({ setActiveSection }) => {
   const textRef = useRef(null);
   
   const handleDownload = () => {
-    // Direct download link from Google Drive
     const downloadUrl = 'https://drive.google.com/file/d/1R8GabtOQ7JDsV2kWA2kYOt8z_p1vm7iQ/view?usp=sharing';
     const link = document.createElement('a');
     link.href = downloadUrl;
@@ -123,10 +122,10 @@ const Hero = ({ setActiveSection }) => {
                 effect="blur"
               />
               
-              {/* Animated overlay */}
+              {}
               <div className="absolute inset-0 bg-gradient-to-t from-cyan-500/20 via-transparent to-purple-500/20 mix-blend-overlay group-hover:opacity-0 transition-opacity duration-700"></div>
               
-              {/* Glitch effect lines */}
+              {}
               <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700">
                 <div className="absolute top-1/4 left-0 w-full h-px bg-cyan-500/50 animate-glitch-h"></div>
                 <div className="absolute top-1/3 left-0 w-full h-px bg-purple-500/50 animate-glitch-h delay-100"></div>
@@ -135,7 +134,7 @@ const Hero = ({ setActiveSection }) => {
             </div>
           </div>
           
-          {/* Floating particles */}
+          {}
           <div className="absolute -inset-4 opacity-0 group-hover:opacity-100 transition-opacity duration-700">
             {[...Array(6)].map((_, i) => (
               <div
@@ -172,7 +171,7 @@ const Hero = ({ setActiveSection }) => {
               SUDHANSHU SHUKLA
             </span>
           </span>
-          {/* Glitch effect lines on hover */}
+          {}
           <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
             <div className="absolute top-1/4 left-0 w-full h-px bg-cyan-500/50 animate-glitch-h"></div>
             <div className="absolute top-1/3 left-0 w-full h-px bg-purple-500/50 animate-glitch-h delay-100"></div>
