@@ -29,9 +29,7 @@ function App() {
   const [theme, setTheme] = useState('dark');
 
   useEffect(() => {
-    // Preload images and assets
     const preloadAssets = async () => {
-      // Simulate asset loading
       await new Promise(resolve => setTimeout(resolve, 2000));
       setLoading(false);
     };
@@ -47,7 +45,6 @@ function App() {
     }
   }, [loading]);
 
-  // Intersection Observer for active section
   useEffect(() => {
     if (loading) return;
     const sectionIds = [
@@ -65,7 +62,6 @@ function App() {
     function setupObserver() {
       const sections = sectionIds.map(id => document.getElementById(id));
       if (sections.some(section => !section)) {
-        // If any section is missing, try again shortly
         timeoutId = setTimeout(setupObserver, 100);
         return;
       }
@@ -104,7 +100,7 @@ function App() {
 
   return (
     <div className={`relative font-sans w-full overflow-x-hidden ${theme === 'dark' ? 'bg-slate-900' : 'bg-gray-50'} text-white min-h-screen transition-colors duration-300`}>
-      {/* Remove AnimatePresence and motion.main for main content */}
+      {}
       {loading ? (
         <LoadingScreen key="loading" />
       ) : (

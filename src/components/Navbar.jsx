@@ -36,7 +36,7 @@ const Navbar = ({ activeSection, setActiveSection, theme, toggleTheme }) => {
       initial={{ y: -100, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.8, ease: "easeOut" }}
-      className={`fixed w-full top-0 z-40 transition-all duration-500 backdrop-blur-lg ${
+      className={`max-h-screen fixed w-full top-0 z-40 transition-all duration-500 backdrop-blur-lg ${
         isScrolled 
           ? 'bg-slate-900/90 py-0 shadow-lg' 
           : 'bg-slate-900/70 py-0'

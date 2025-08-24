@@ -7,9 +7,7 @@ const ParticleBackground = () => {
   const particlesInit = useCallback(async engine => {
     await loadSlim(engine);
   }, []);
-
   const particlesLoaded = useCallback(async container => {
-    // Container loaded
   }, []);
 
   return (
