@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { Code, Database, Cloud, MonitorSmartphone, Brush, Brain } from 'lucide-react';
+import { Code2, Braces, Coffee, Globe, FileCode, GitBranch, Github, Server, Boxes, Network, Workflow, Leaf, HardDrive } from 'lucide-react';
 
 const Skills = () => {
   const [ref, inView] = useInView({
@@ -22,7 +23,7 @@ const Skills = () => {
 
   useEffect(() => {
     if (!sectionInView) return;
-    // Ye hai to update active section in parent component
+    // Ye hai to update active section update k liyein parent component
     const event = new CustomEvent('sectionInView', { detail: 'skills' });
     window.dispatchEvent(event);
   }, [sectionInView]);
@@ -37,18 +38,19 @@ const Skills = () => {
         { name: "Java", proficiency: 80 },
         { name: "Python", proficiency: 85 },
         { name: "PHP", proficiency: 60 },
-        { name: "JavaScript", proficiency: 90 },
+        { name: "JavaScript (ES6+)", proficiency: 90 },
       ],
     },
     {
       icon: <MonitorSmartphone className="w-8 h-8 text-cyan-400" />,
       title: "Web Development",
       skills: [
-        { name: "HTML", proficiency: 95 },
-        { name: "CSS", proficiency: 90 },
-        { name: "JavaScript", proficiency: 90 },
+        { name: "HTML, CSS, JavaScript", proficiency: 95 },
         { name: "ReactJS", proficiency: 85 },
-        { name: "Next.js", proficiency: 80 },
+        { name: "NextJS", proficiency: 80 },
+        { name: "ExpressJS", proficiency: 85 },
+        { name: "Node", proficiency: 80 },
+        { name: "REST APIs", proficiency: 85 },
       ],
     },
     {
@@ -56,44 +58,73 @@ const Skills = () => {
       title: "Database Management",
       skills: [
         { name: "SQL", proficiency: 80 },
+        { name: "MySQL", proficiency: 80 },
+        { name: "MongoDB", proficiency: 80 },
+        { name: "Redis", proficiency: 70 },
         { name: "Database Design", proficiency: 75 },
         { name: "Query Optimization", proficiency: 70 },
       ],
     },
     {
-      icon: <Cloud className="w-8 h-8 text-cyan-400" />,
-      title: "Cloud Computing",
+      icon: <Server className="w-8 h-8 text-cyan-400" />,
+      title: "System Design",
       skills: [
-        { name: "Cloud Architecture", proficiency: 65 },
-        { name: "Service Deployment", proficiency: 70 },
+        { name: "High-Level Design", proficiency: 75 },
+        { name: "Microservices", proficiency: 75 },
+        { name: "Scalability Patterns", proficiency: 70 },
+        { name: "API Design", proficiency: 80 },
       ],
     },
     {
-      icon: <Brain className="w-8 h-8 text-cyan-400" />,
-      title: "Machine Learning",
+      icon: <GitBranch className="w-8 h-8 text-cyan-400" />,
+      title: "Dev Tools",
       skills: [
-        { name: "Data Analysis", proficiency: 75 },
-        { name: "Model Training", proficiency: 70 },
-        { name: "Algorithm Design", proficiency: 65 },
-      ],
-    },
-    {
-      icon: <Brush className="w-8 h-8 text-cyan-400" />,
-      title: "Design Tools",
-      skills: [
-        { name: "Adobe Photoshop", proficiency: 60 },
+        { name: "CI/CD (GitHub Actions)", proficiency: 70 },
+        { name: "Git", proficiency: 85 },
+        { name: "GitHub", proficiency: 85 },
       ],
     },
   ];
 
   const softSkills = [
-    "Problem-solving",
+    "Problem Solving",
     "Critical thinking",
     "Effective communication",
-    "Team collaboration",
+    "Collaboration",
     "Time management",
     "Adaptability",
+    "Fast Learner",
+    "Ownership",
   ];
+
+  // Map lucide icons to skills for visual bullets
+  const iconMap = {
+    Python: <Code2 className="w-4 h-4 text-cyan-400" />,
+    'C': <Braces className="w-4 h-4 text-cyan-400" />,
+    'C++': <Braces className="w-4 h-4 text-cyan-400" />,
+    Java: <Coffee className="w-4 h-4 text-cyan-400" />,
+    PHP: <Code2 className="w-4 h-4 text-cyan-400" />,
+    'JavaScript (ES6+)': <FileCode className="w-4 h-4 text-cyan-400" />,
+    HTML: <Globe className="w-4 h-4 text-cyan-400" />,
+    CSS: <Brush className="w-4 h-4 text-cyan-400" />,
+    ReactJS: <Code2 className="w-4 h-4 text-cyan-400" />,
+    NextJS: <Code2 className="w-4 h-4 text-cyan-400" />,
+    SQL: <Database className="w-4 h-4 text-cyan-400" />,
+    MySQL: <Database className="w-4 h-4 text-cyan-400" />,
+    MongoDB: <Leaf className="w-4 h-4 text-green-400" />,
+    Redis: <HardDrive className="w-4 h-4 text-red-400" />,
+    'Database Design': <Database className="w-4 h-4 text-cyan-400" />,
+    'Query Optimization': <Database className="w-4 h-4 text-cyan-400" />,
+    'High-Level Design': <Server className="w-4 h-4 text-cyan-400" />,
+    Microservices: <Boxes className="w-4 h-4 text-cyan-400" />,
+    'Scalability Patterns': <Network className="w-4 h-4 text-cyan-400" />,
+    'API Design': <Network className="w-4 h-4 text-cyan-400" />,
+    'REST APIs': <Network className="w-4 h-4 text-cyan-400" />,
+    'CI/CD (GitHub Actions)': <Workflow className="w-4 h-4 text-cyan-400" />,
+    Git: <GitBranch className="w-4 h-4 text-cyan-400" />,
+    GitHub: <Github className="w-4 h-4 text-cyan-400" />,
+    'Adobe Photoshop': <Brush className="w-4 h-4 text-cyan-400" />,
+  };
 
   return (
     <section
@@ -139,23 +170,25 @@ const Skills = () => {
                 </div>
                 <h3 className="text-xl font-bold">{category.title}</h3>
               </div>
-              <div className="space-y-4">
+              <ul className="space-y-3">
                 {category.skills.map((skill, idx) => (
-                  <div key={idx} className="mb-2">
-                    <div className="flex justify-between mb-1">
-                      <span className="text-gray-200 font-medium">{skill.name}</span>
-                      <span className="text-cyan-400 font-semibold">{skill.proficiency}%</span>
-                    </div>
-                    <motion.div
-                      initial={{ width: 0 }}
-                      animate={hasAnimated ? { width: `${skill.proficiency}%` } : { width: 0 }}
-                      transition={{ duration: 1, delay: 0.2 + 0.05 * idx }}
-                      className="h-3 rounded-lg bg-gradient-to-r from-cyan-500 to-fuchsia-500 shadow-md"
-                      style={{ maxWidth: '100%' }}
-                    />
-                  </div>
+                  <motion.li
+                    key={idx}
+                    initial={{ x: -20, opacity: 0 }}
+                    animate={hasAnimated ? { x: 0, opacity: 1 } : { x: -20, opacity: 0 }}
+                    transition={{ duration: 0.4, delay: 0.15 + 0.05 * idx }}
+                    className="flex items-center gap-3 group"
+                  >
+                    <span className="relative inline-flex items-center justify-center w-8 h-8 rounded-full bg-slate-800/80 border border-white/10 shadow-sm">
+                      {iconMap[skill.name] || <Code2 className="w-4 h-4 text-cyan-400" />}
+                      <span className="absolute inset-0 rounded-full bg-gradient-to-r from-cyan-500/0 to-fuchsia-500/0 group-hover:from-cyan-500/10 group-hover:to-fuchsia-500/10 transition-colors"></span>
+                    </span>
+                    <span className="text-gray-200 font-medium">
+                      {skill.name}
+                    </span>
+                  </motion.li>
                 ))}
-              </div>
+              </ul>
             </motion.div>
           ))}
         </div>

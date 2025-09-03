@@ -33,14 +33,16 @@ const Education = () => {
       degree: "B.Tech in Artificial Intelligence & Machine Learning",
       institution: "NIET, Greater Noida",
       duration: "2023 - 2027 (Expected)",
-      description: "Currently in 3rd year, exploring the depths of AI and ML technologies while participating in various tech events and hackathons."
+      description: "Currently in 3rd year, exploring the depths of AI and ML technologies while participating in various tech events and hackathons.\n",
+      subjects: ["Python, C, C++, Java", "SQL, MongoDB, Firebase", "Data Structures and Algorithms"]
     },
     {
       icon: <School className="w-10 h-10 text-cyan-400" />,
       degree: "Higher Secondary Education (Computer Science)",
       institution: "Army Public School No.2, Jabalpur",
       duration: "2020 - 2022",
-      description: "Focused on computer science fundamentals, data structures, and algorithms, laying the groundwork for my tech journey."
+      description: "Focused on computer science fundamentals, data structures, and algorithms, laying the groundwork for my tech journey.\n",
+      subjects: ["Computer Science - Python, C", "Mathematics"]
     }
   ];
 
@@ -111,6 +113,22 @@ const Education = () => {
                       
                       <h4 className="text-lg font-semibold mb-2 text-gradient">{item.institution}</h4>
                       <p className="text-gray-300">{item.description}</p>
+                      {item.subjects && item.subjects.length > 0 && (
+                        <ul className="mt-4 space-y-2">
+                          {item.subjects.map((subject, i) => (
+                            <li
+                              key={i}
+                              className="relative pl-6 text-gray-200/90 hover:text-white transition-colors duration-200"
+                            >
+                              <span className="absolute left-0 top-1 w-3 h-3">
+                                <span className="absolute inset-0 rounded-full bg-indigo-600 shadow-[0_0_8px_rgba(99,102,241,0.5)]"></span>
+                                <span className="absolute inset-0 rounded-full bg-indigo-400 opacity-40 animate-ping"></span>
+                              </span>
+                              {subject}
+                            </li>
+                          ))}
+                        </ul>
+                      )}
                     </div>
                   </div>
                 </motion.div>

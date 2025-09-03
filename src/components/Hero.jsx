@@ -188,7 +188,7 @@ const Hero = ({ setActiveSection }) => {
           variants={item} 
           className="text-xl md:text-2xl mb-8 text-gray-300"
         >
-          AI & ML Engineer <span className="text-gray-500">|</span> Problem Solver <span className="text-gray-500">|</span> Chess Player
+          AI & ML Engineer <span className="text-gray-500">|</span> Problem Solver <span className="text-gray-500">|</span> 6+ years of coding
         </motion.p>
         
         <motion.div
