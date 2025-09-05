@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { MessageSquare, X, Send, Bot } from 'lucide-react';
+import { MessageSquare, X, Send, Bot, Sun, AlertTriangle } from 'lucide-react';
 import Fuse from 'fuse.js';
 import qaData from '../sentry-qa.json';
 
@@ -90,6 +90,7 @@ const Sentry = () => {
   const [input, setInput] = useState('');
   const [isTyping, setIsTyping] = useState(false);
   const chatRef = useRef(null);
+  const [isPrankOpen, setIsPrankOpen] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -142,6 +143,60 @@ const Sentry = () => {
           {isOpen ? <X className="w-6 h-6" /> : <MessageSquare className="w-6 h-6" />}
         </button>
       </motion.div>
+      {/* Light mode prank sticky button */}
+      <motion.div
+        initial={{ scale: 0 }}
+        animate={{ scale: 1 }}
+        className="fixed bottom-24 left-4 z-50"
+      >
+        <button
+          onClick={() => setIsPrankOpen(true)}
+          className="p-4 bg-gradient-to-r from-yellow-400 to-yellow-600 rounded-full shadow-lg hover:shadow-yellow-500/20 transition-all duration-300"
+          aria-label="Light mode prank"
+        >
+          <Sun className="w-6 h-6 text-yellow-200" />
+        </button>
+      </motion.div>
+      {/* Prank Light Mode Modal */}
+      <AnimatePresence>
+        {isPrankOpen && (
+          <motion.div
+            key="prank-modal"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-50 flex items-start justify-center pt-28 sm:pt-24"
+          >
+            <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" onClick={() => setIsPrankOpen(false)}></div>
+            <motion.div
+              initial={{ scale: 0.95, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.95, opacity: 0 }}
+              transition={{ duration: 0.2 }}
+              className="relative z-10 w-[92vw] max-w-md rounded-xl border border-white/10 bg-slate-900/95 p-4 sm:p-6 shadow-2xl max-h-[80vh] overflow-auto"
+            >
+              <div className="flex items-start gap-3">
+                <div className="p-2 rounded-lg bg-yellow-500/10 border border-yellow-400/20">
+                  <AlertTriangle className="w-6 h-6 text-yellow-300" />
+                </div>
+                <div>
+                  <h4 className="text-lg font-bold mb-2">Light Mode?</h4>
+                  <p className="text-gray-300">“What kinda developer uses light mode — are you out of your mind?”</p>
+                </div>
+              </div>
+              <div className="mt-6 flex justify-end gap-2">
+                <button
+                  type="button"
+                  onClick={() => setIsPrankOpen(false)}
+                  className="px-4 py-2 rounded-lg bg-slate-800 hover:bg-slate-700 border border-white/10 text-white transition-colors"
+                >
+                  Okay 😭
+                </button>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       <AnimatePresence>
         {isOpen && (

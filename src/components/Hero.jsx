@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { motion } from 'framer-motion';
-import { ChevronDown } from 'lucide-react';
+import { ChevronDown, Sun, AlertTriangle } from 'lucide-react';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import 'react-lazy-load-image-component/src/effects/blur.css';
 
@@ -8,6 +8,7 @@ import 'react-lazy-load-image-component/src/effects/blur.css';
 const Hero = ({ setActiveSection }) => {
   const [hasAnimated, setHasAnimated] = useState(false);
   const textRef = useRef(null);
+  const [isPrankOpen, setIsPrankOpen] = useState(false);
   
   const handleDownload = () => {
     const downloadUrl = 'https://drive.google.com/file/d/1R8GabtOQ7JDsV2kWA2kYOt8z_p1vm7iQ/view?usp=sharing';
@@ -171,12 +172,6 @@ const Hero = ({ setActiveSection }) => {
               SUDHANSHU SHUKLA
             </span>
           </span>
-          {}
-          <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
-            <div className="absolute top-1/4 left-0 w-full h-px bg-cyan-500/50 animate-glitch-h"></div>
-            <div className="absolute top-1/3 left-0 w-full h-px bg-purple-500/50 animate-glitch-h delay-100"></div>
-            <div className="absolute top-1/2 left-0 w-full h-px bg-white/50 animate-glitch-h delay-200"></div>
-          </div>
         </motion.h1>
         
         <motion.div 
