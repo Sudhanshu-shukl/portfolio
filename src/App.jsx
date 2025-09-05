@@ -5,6 +5,7 @@ import ParticleBackground from './components/ParticleBackground';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import Sentry from './components/Sentry';
+import Contributions from './components/Contributions';
 
 // Lazy load components
 const Hero = React.lazy(() => import('./components/Hero'));
@@ -13,7 +14,7 @@ const Education = React.lazy(() => import('./components/Education'));
 const Skills = React.lazy(() => import('./components/Skills'));
 const Projects = React.lazy(() => import('./components/Projects'));
 const Experience = React.lazy(() => import('./components/Experience'));
-const Achievements = React.lazy(() => import('./components/Achievements'));
+const Achievements = React.lazy(() => import('./components/Achievements')); 
 const Contact = React.lazy(() => import('./components/Contact'));
 
 // Loading fallback component
@@ -55,6 +56,7 @@ function App() {
       'projects',
       'experience',
       'achievements',
+      'contributions',
       'contact',
     ];
     let observer;
@@ -142,6 +144,10 @@ function App() {
               
               <section id="achievements" className="min-h-screen">
                 <Achievements theme={theme} />
+              </section>
+              
+              <section id="contributions" className="min-h-screen">
+                <Contributions />
               </section>
               
               <section id="contact" className="min-h-screen">

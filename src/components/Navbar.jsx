@@ -29,6 +29,7 @@ const Navbar = ({ activeSection, setActiveSection, theme, toggleTheme }) => {
     { text: "Projects", href: "#projects", id: "projects" },
     { text: "Experience", href: "#experience", id: "experience" },
     { text: "Achievements", href: "#achievements", id: "achievements" },
+    { text: "Contributions", href: "#contributions", id: "contributions" },
     { text: "Contact", href: "#contact", id: "contact" },
   ];
 
