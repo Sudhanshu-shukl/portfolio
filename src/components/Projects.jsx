@@ -102,7 +102,7 @@ const Projects = () => {
           <div className="h-0.5 w-24 md:w-32 bg-gradient-to-r from-cyan-500 to-fuchsia-500 mx-auto mb-8"></div>
         </motion.div>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6 md:gap-8 max-w-sm mx-auto md:max-w-none">
           {projects.map((project, index) => (
             <Tilt
               key={index}
@@ -140,36 +140,37 @@ const Projects = () => {
                   </div>
                 </div>
                 
-                <div className="p-6 relative z-10">
-                  <h3 className="text-2xl font-bold mb-3 mt-8">{project.title}</h3>
-                  <p className="text-gray-300 mb-6">{project.description}</p>
+                <div className="p-4 md:p-6 relative z-10">
+                  <h3 className="text-lg md:text-2xl font-bold mb-3 mt-6 md:mt-8">{project.title}</h3>
+                  <p className="text-sm md:text-base text-gray-300 mb-4 md:mb-6">{project.description}</p>
                   
-                  <div className="flex flex-wrap gap-2 mt-auto items-center justify-between">
+                  <div className="flex flex-col md:flex-row gap-3 mt-auto">
                     <div className="flex flex-wrap gap-2">
                       {project.techStack.map((tech, idx) => (
                         <span
                           key={idx}
-                          className="px-3 py-1 text-xs rounded-full bg-slate-800 text-gray-300"
+                          className="px-2 md:px-3 py-1 text-xs rounded-full bg-slate-800 text-gray-300"
                         >
                           {tech}
                         </span>
                       ))}
                     </div>
                     {/* Glassmorphism buttons for Live Demo and GitHub */}
-                    <div className="flex gap-3 ml-2 mt-2 md:mt-0">
+                    <div className="flex flex-col sm:flex-row gap-2 md:gap-3">
                       {project.completed ? (
                         <a
                           href={project.liveDemo}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/20 backdrop-blur-md text-cyan-200 font-semibold shadow-lg hover:bg-cyan-400/30 hover:text-white transition-all duration-200 border border-cyan-300/20"
+                          className="inline-flex items-center justify-center gap-2 px-3 md:px-4 py-2 rounded-full bg-white/20 backdrop-blur-md text-cyan-200 font-semibold shadow-lg hover:bg-cyan-400/30 hover:text-white transition-all duration-200 border border-cyan-300/20 text-sm md:text-base"
                         >
-                          <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                          <svg className="w-3 md:w-4 h-3 md:h-4" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
                             <path d="M18 13v6a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
                             <polyline points="15 3 21 3 21 9" />
                             <line x1="10" y1="14" x2="21" y2="3" />
                           </svg>
-                          Live Demo
+                          <span className="hidden sm:inline">Live Demo</span>
+                          <span className="sm:hidden">Demo</span>
                         </a>
                       ) : (
                         <button
@@ -178,23 +179,24 @@ const Projects = () => {
                             setModalMessage('Live demo for this project is under progress. Please check back soon!');
                             setModalOpen(true);
                           }}
-                          className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/20 backdrop-blur-md text-cyan-200 font-semibold shadow-lg hover:bg-cyan-400/30 hover:text-white transition-all duration-200 border border-cyan-300/20 focus:outline-none"
+                          className="inline-flex items-center justify-center gap-2 px-3 md:px-4 py-2 rounded-full bg-white/20 backdrop-blur-md text-cyan-200 font-semibold shadow-lg hover:bg-cyan-400/30 hover:text-white transition-all duration-200 border border-cyan-300/20 focus:outline-none text-sm md:text-base"
                         >
-                          <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                          <svg className="w-3 md:w-4 h-3 md:h-4" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
                             <path d="M18 13v6a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
                             <polyline points="15 3 21 3 21 9" />
                             <line x1="10" y1="14" x2="21" y2="3" />
                           </svg>
-                          Live Demo
+                          <span className="hidden sm:inline">Live Demo</span>
+                          <span className="sm:hidden">Demo</span>
                         </button>
                       )}
                       <a
                         href={project.github}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/20 backdrop-blur-md text-gray-200 font-semibold shadow-lg hover:bg-gray-700/40 hover:text-white transition-all duration-200 border border-gray-300/20"
+                        className="inline-flex items-center justify-center gap-2 px-3 md:px-4 py-2 rounded-full bg-white/20 backdrop-blur-md text-gray-200 font-semibold shadow-lg hover:bg-gray-700/40 hover:text-white transition-all duration-200 border border-gray-300/20 text-sm md:text-base"
                       >
-                        <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                        <svg className="w-3 md:w-4 h-3 md:h-4" fill="currentColor" viewBox="0 0 24 24">
                           <path d="M12 .5C5.73.5.5 5.74.5 12.02c0 5.1 3.29 9.43 7.86 10.96.58.11.79-.25.79-.56 0-.28-.01-1.02-.02-2-3.2.7-3.88-1.54-3.88-1.54-.53-1.34-1.3-1.7-1.3-1.7-1.06-.72.08-.71.08-.71 1.17.08 1.78 1.2 1.78 1.2 1.04 1.78 2.73 1.27 3.4.97.11-.75.41-1.27.74-1.56-2.55-.29-5.23-1.28-5.23-5.7 0-1.26.45-2.29 1.19-3.1-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11.1 11.1 0 0 1 2.9-.39c.98 0 1.97.13 2.9.39 2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.84 1.19 3.1 0 4.43-2.69 5.41-5.25 5.7.42.36.79 1.09.79 2.2 0 1.59-.01 2.87-.01 3.26 0 .31.21.68.8.56C20.71 21.45 24 17.12 24 12.02 24 5.74 18.27.5 12 .5z"/>
                         </svg>
                         GitHub
