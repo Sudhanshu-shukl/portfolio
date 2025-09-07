@@ -83,8 +83,8 @@ const About = ({ theme }) => {
         >
           <h2
             data-text="ABOUT ME"
-            className={`glitch-text text-4xl md:text-5xl font-bold mb-8 ${theme === 'dark' ? 'text-white' : 'text-slate-900'
-              }`}
+            className="glitch-text text-4xl md:text-5xl font-bold mb-8"
+            style={{background: 'linear-gradient(to top, #9CA3AF, #D1D5DB, #FFFFFF)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text'}}
           >
             ABOUT ME
           </h2>

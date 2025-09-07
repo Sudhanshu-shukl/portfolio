@@ -266,15 +266,9 @@ const Hero = ({ setActiveSection }) => {
           className="text-5xl md:text-7xl font-bold mb-4 tracking-tighter group cursor-pointer relative"
           data-value="SUDHANSHU SHUKLA"
           ref={textRef}
+          style={{background: 'linear-gradient(to top, #9CA3AF, #D1D5DB, #FFFFFF)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text'}}
         >
-          <span className="relative inline-block">
-            <span className="absolute inset-0 bg-gradient-to-r from-cyan-500 via-purple-500 to-cyan-500 bg-clip-text text-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 animate-pulse">
-              SUDHANSHU SHUKLA
-            </span>
-            <span className="relative group-hover:animate-glitch-h">
-              SUDHANSHU SHUKLA
-            </span>
-          </span>
+          SUDHANSHU SHUKLA
         </motion.h1>
         
         <motion.div 

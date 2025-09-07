@@ -35,66 +35,120 @@ const contributions = [
 const Contributions = () => {
     return (
         <section id="contributions" className="py-20 px-4 max-w-sm md:max-w-4xl mx-auto">
-            <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-2 text-gradient">Community Contributions</h2>
-            <p className="text-sm md:text-base lg:text-lg text-gray-300 mb-6 md:mb-8">Small contributions to the tech community for beginners — because real progress isn't about how high you rise, but how gently you hold the world while doing it.</p>
-            <ul className="space-y-4 md:space-y-8">
+            <div className="text-center mb-16">
+                <h2 
+                  data-text="CONTRIBUTIONS" 
+                  className="glitch-text text-4xl md:text-5xl font-bold mb-8"
+                  style={{background: 'linear-gradient(to top, #9CA3AF, #D1D5DB, #FFFFFF)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text'}}
+                >
+                  CONTRIBUTIONS
+                </h2>
+                <div className="h-0.5 w-24 md:w-32 bg-gradient-to-r from-cyan-500 to-fuchsia-500 mx-auto mb-8"></div>
+            </div>
+            <p className="text-sm md:text-base lg:text-lg text-gray-300 mb-6 md:mb-8 text-center">Small contributions to the tech community for beginners — because real progress isn't about how high you rise, but how gently you hold the world while doing it.</p>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
                 {contributions.map((item, idx) => (
-                    <li key={idx}>
-                        <a
-                            href={item.link}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="block bg-slate-800/60 border border-white/10 rounded-xl p-4 md:p-6 shadow-lg hover:shadow-cyan-500/10 hover:border-cyan-400/30 transition-all duration-300 cursor-pointer group"
-                        >
-                            <div className="flex flex-col md:flex-row items-start gap-3 md:gap-4">
-                                <div className="flex-shrink-0 p-2 md:p-3 bg-cyan-500/10 rounded-lg border border-cyan-400/20 group-hover:bg-cyan-500/20 transition-colors">
-                                    <item.icon className="w-5 h-5 md:w-6 md:h-6 text-cyan-400 group-hover:text-cyan-300 transition-colors" />
+                    <a
+                        key={idx}
+                        href={item.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="group relative bg-slate-800/60 backdrop-blur-sm border border-white/10 rounded-xl overflow-hidden hover:border-cyan-400/30 transition-all duration-500 hover:transform hover:scale-105 hover:shadow-2xl hover:shadow-cyan-500/20"
+                    >
+                        {/* Gradient Background */}
+                        <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/5 via-transparent to-purple-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                        
+                        {/* Header with Icon */}
+                        <div className="relative p-6 pb-4">
+                            <div className="flex items-center gap-4 mb-4">
+                                <div className="p-3 bg-gradient-to-br from-cyan-500/20 to-purple-500/20 rounded-xl border border-cyan-400/20 group-hover:border-cyan-400/40 transition-all duration-300">
+                                    <item.icon className="w-6 h-6 text-cyan-400 group-hover:text-cyan-300 transition-colors" />
                                 </div>
                                 <div className="flex-1">
-                                    <h3 className="text-lg md:text-xl font-semibold mb-2 text-cyan-400 group-hover:text-cyan-300 transition-colors">{item.title}</h3>
-                                    <p className="text-sm md:text-base text-gray-300 mb-3 md:mb-4">{item.description}</p>
-                                    {item.companies && (
-                                        <div className="mb-3 md:mb-4">
-                                            <h4 className="text-xs md:text-sm font-medium text-gray-400 mb-2">Companies Covered:</h4>
-                                            <div className="flex flex-wrap gap-1 md:gap-2">
-                                                {item.companies.map((company, companyIdx) => (
-                                                    <span key={companyIdx} className="px-2 py-1 bg-slate-700/50 text-xs rounded-md text-gray-300 border border-slate-600/30">
-                                                        {company}
-                                                    </span>
-                                                ))}
-                                            </div>
-                                        </div>
-                                    )}
-                                    {item.topics && (
-                                        <div className="mb-3 md:mb-4">
-                                            <h4 className="text-xs md:text-sm font-medium text-gray-400 mb-2">Topics Covered:</h4>
-                                            <div className="flex flex-wrap gap-1 md:gap-2">
-                                                {item.topics.map((topic, topicIdx) => (
-                                                    <span key={topicIdx} className="px-2 py-1 bg-slate-700/50 text-xs rounded-md text-gray-300 border border-slate-600/30">
-                                                        {topic}
-                                                    </span>
-                                                ))}
-                                            </div>
-                                        </div>
-                                    )}
-                                    {item.features && (
-                                        <div className="mb-3 md:mb-4">
-                                            <h4 className="text-xs md:text-sm font-medium text-gray-400 mb-2">Features:</h4>
-                                            <div className="flex flex-wrap gap-1 md:gap-2">
-                                                {item.features.map((feature, featureIdx) => (
-                                                    <span key={featureIdx} className="px-2 py-1 bg-slate-700/50 text-xs rounded-md text-gray-300 border border-slate-600/30">
-                                                        {feature}
-                                                    </span>
-                                                ))}
-                                            </div>
-                                        </div>
-                                    )}
+                                    <h3 className="text-lg font-bold text-white group-hover:text-cyan-300 transition-colors line-clamp-2">
+                                        {item.title}
+                                    </h3>
                                 </div>
                             </div>
-                        </a>
-                    </li>
+                            
+                            <p className="text-sm text-gray-300 leading-relaxed mb-4 line-clamp-3">
+                                {item.description}
+                            </p>
+                        </div>
+                        
+                        {/* Tags Section */}
+                        <div className="relative px-6 pb-6">
+                            {item.companies && (
+                                <div className="mb-4">
+                                    <h4 className="text-xs font-semibold text-gray-400 mb-2 uppercase tracking-wide">Companies</h4>
+                                    <div className="flex flex-wrap gap-2">
+                                        {item.companies.slice(0, 4).map((company, companyIdx) => (
+                                            <span key={companyIdx} className="px-3 py-1 bg-slate-700/60 text-xs rounded-full text-gray-300 border border-slate-600/30 hover:border-cyan-400/30 transition-colors">
+                                                {company}
+                                            </span>
+                                        ))}
+                                        {item.companies.length > 4 && (
+                                            <span className="px-3 py-1 bg-slate-700/60 text-xs rounded-full text-gray-400 border border-slate-600/30">
+                                                +{item.companies.length - 4} more
+                                            </span>
+                                        )}
+                                    </div>
+                                </div>
+                            )}
+                            
+                            {item.topics && (
+                                <div className="mb-4">
+                                    <h4 className="text-xs font-semibold text-gray-400 mb-2 uppercase tracking-wide">Topics</h4>
+                                    <div className="flex flex-wrap gap-2">
+                                        {item.topics.slice(0, 3).map((topic, topicIdx) => (
+                                            <span key={topicIdx} className="px-3 py-1 bg-slate-700/60 text-xs rounded-full text-gray-300 border border-slate-600/30 hover:border-cyan-400/30 transition-colors">
+                                                {topic}
+                                            </span>
+                                        ))}
+                                        {item.topics.length > 3 && (
+                                            <span className="px-3 py-1 bg-slate-700/60 text-xs rounded-full text-gray-400 border border-slate-600/30">
+                                                +{item.topics.length - 3} more
+                                            </span>
+                                        )}
+                                    </div>
+                                </div>
+                            )}
+                            
+                            {item.features && (
+                                <div className="mb-4">
+                                    <h4 className="text-xs font-semibold text-gray-400 mb-2 uppercase tracking-wide">Features</h4>
+                                    <div className="flex flex-wrap gap-2">
+                                        {item.features.slice(0, 3).map((feature, featureIdx) => (
+                                            <span key={featureIdx} className="px-3 py-1 bg-slate-700/60 text-xs rounded-full text-gray-300 border border-slate-600/30 hover:border-cyan-400/30 transition-colors">
+                                                {feature}
+                                            </span>
+                                        ))}
+                                        {item.features.length > 3 && (
+                                            <span className="px-3 py-1 bg-slate-700/60 text-xs rounded-full text-gray-400 border border-slate-600/30">
+                                                +{item.features.length - 3} more
+                                            </span>
+                                        )}
+                                    </div>
+                                </div>
+                            )}
+                            
+                            {/* View Link */}
+                            <div className="flex items-center justify-between pt-4 border-t border-white/10">
+                                <span className="text-xs text-gray-400">Click to view</span>
+                                <div className="w-6 h-6 rounded-full bg-cyan-500/20 flex items-center justify-center group-hover:bg-cyan-500/30 transition-colors">
+                                    <svg className="w-3 h-3 text-cyan-400 group-hover:text-cyan-300 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        {/* Decorative Elements */}
+                        <div className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-br from-cyan-500/10 to-transparent rounded-full blur-xl"></div>
+                        <div className="absolute bottom-0 left-0 w-16 h-16 bg-gradient-to-tr from-purple-500/10 to-transparent rounded-full blur-xl"></div>
+                    </a>
                 ))}
-            </ul>
+            </div>
         </section>
     );
 };

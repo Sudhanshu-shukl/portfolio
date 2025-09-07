@@ -78,7 +78,11 @@ const Achievements = () => {
           ref={ref}
           className="text-center mb-16"
         >
-          <h2 data-text="ACHIEVEMENTS" className="glitch-text text-4xl md:text-5xl font-bold mb-8">
+          <h2 
+            data-text="ACHIEVEMENTS" 
+            className="glitch-text text-4xl md:text-5xl font-bold mb-8"
+            style={{background: 'linear-gradient(to top, #9CA3AF, #D1D5DB, #FFFFFF)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text'}}
+          >
             ACHIEVEMENTS
           </h2>
           <div className="h-0.5 w-24 md:w-32 bg-gradient-to-r from-cyan-500 to-fuchsia-500 mx-auto mb-8"></div>
