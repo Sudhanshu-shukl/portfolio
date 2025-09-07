@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import { Mail, Linkedin, Github, Send, Instagram } from 'lucide-react';
+import { Mail, Linkedin, Github, Send, Instagram, Youtube } from 'lucide-react';
 
 const Contact = () => {
   const [ref, inView] = useInView({
@@ -176,6 +176,18 @@ const Contact = () => {
                   <Instagram className="w-6 h-6" />
                 </div>
                 <span>sudh.sss</span>
+              </a>
+
+              <a 
+                href="https://www.youtube.com/channel/UCDJvfrnOpYxnVdWuJpP-5Mw" 
+                target='_blank'
+                rel="noopener noreferrer"
+                className="flex items-center gap-4 text-gray-300 hover:text-cyan-400 transition-colors duration-300"
+              >
+                <div className="p-3 bg-slate-800 rounded-lg">
+                  <Youtube className="w-6 h-6" />
+                </div>
+                <span>YouTube Channel</span>
               </a>
             </div>
             

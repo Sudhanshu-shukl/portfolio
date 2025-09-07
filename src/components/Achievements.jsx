@@ -35,8 +35,8 @@ const Achievements = () => {
     },
     {
       icon: <Zap className="w-12 h-12 text-orange-500" />,
-      title: "3x Hackathon Winner",
-      description: "Secured victories in multiple hackathons, showcasing rapid prototyping and innovative problem-solving skills."
+      title: "2x Hackathon Winner",
+      description: "Secured victories in multiple local college level hackathons, showcasing rapid prototyping and innovative problem-solving skills."
     },
     {
       icon: <Star className="w-12 h-12 text-purple-500" />,
@@ -44,14 +44,9 @@ const Achievements = () => {
       description: "Reached the finals of HackIndia 2025, one of India's premier Web3 hackathon competition."
     },
     {
-      icon: <Users className="w-12 h-12 text-blue-500" />,
-      title: "Campus Ambassador",
-      description: "Selected as Campus Ambassador for multiple tech and ed-tech platforms, demonstrating leadership and communication skills."
-    },
-    {
       icon: <Code className="w-12 h-12 text-green-500" />,
-      title: "Open Source Contributor",
-      description: "Regularly contribute to open-source projects and maintain active personal repositories on GitHub."
+      title: "Community Contributor",
+      description: "Regularly contribute to the tech community and maintain active personal repositories on GitHub."
     },
     {
       icon: <TrendingUp className="w-12 h-12 text-orange-500" />,
@@ -127,7 +122,7 @@ const Achievements = () => {
             <p className="text-gray-300 max-w-2xl mx-auto">
               While I continue to build my formal achievement portfolio, I'm constantly participating in coding challenges, 
               debates, and continuously enhancing my skills through practical projects and applications. My journey is focused 
-              on making a meaningful impact in the field of AI and software development.
+              on making a meaningful impact in the field of software engineering.
             </p>
             
             <div className="mt-8 flex flex-col md:flex-row justify-center items-center gap-4">

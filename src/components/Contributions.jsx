@@ -35,7 +35,8 @@ const contributions = [
 const Contributions = () => {
     return (
         <section id="contributions" className="py-20 px-4 max-w-4xl mx-auto">
-            <h2 className="text-3xl md:text-4xl font-bold mb-8 text-gradient">Community Contributions</h2>
+            <h2 className="text-3xl md:text-4xl font-bold mb-2 text-gradient">Community Contributions</h2>
+            <p className="text-base md:text-lg text-gray-300 mb-8">Small contributions to the tech community for beginners — because real progress isn’t about how high you rise, but how gently you hold the world while doing it.</p>
             <ul className="space-y-8">
                 {contributions.map((item, idx) => (
                     <li key={idx}>

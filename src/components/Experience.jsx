@@ -35,20 +35,21 @@ const Experience = ({ theme }) => {
       ),
       title: "Summer Intern",
       company: "ScholarRank AI",
+      companyUrl: "https://www.scholarrank.com/",
       type: "Internship",
-      duration: "Jul 2025 - Present",
-      timeSpan: "1 mo",
+      duration: "Jul 2025 – Sept 2025",
+      timeSpan: "3 mos",
       location: "Noida, Uttar Pradesh, India",
       workType: "Remote",
-      intro: "I've been told I work here. Someone let me know if I do.",
+      intro: "Key contributions during the internship:",
       responsibilities: [
-        "Building cool UI for real AI tools using ReactJS and a little drama",
-        "Collaborating with backend & LLM devs to make things actually work",
-        "Testing features, pushing PRs, and occasionally pretending to understand \"production\"",
-        "Making the frontend beautiful, interactive, and heck efficient"
+        "Created a web-based internship portal that reduced the application and review cycle time by 50%",
+        "Designed 20+ modular UI components in ReactJS, reused across 3+ internal tools to boost dev speed",
+        "Collaborated with the backend teams to integrate 10+ real-time APIs and streamline data flow across features",
+        "Cut page load time by ~30% through render & asset optimization"
       ],
-      closing: "Still waiting to get fired. Until then... let's build.",
-      skills: ["AngularJS", "Tailwind CSS", "ReactJS","NextJS"]
+      closing: "Lots to learn here. This is just the beginning.",
+      skills: ["Tailwind CSS", "ReactJS","NextJS"]
     },
     {
       logo: (
@@ -63,7 +64,7 @@ const Experience = ({ theme }) => {
       timeSpan: "3 mos",
       location: "Delhi, India",
       workType: "Hybrid",
-      intro: "I showed up once and never left. I think that made me an employee.",
+      intro: "Friend's startup (not an official company), so it's not on my resume — but I count it as work experience because I genuinely worked there.",
       responsibilities: [
         "Built the frontend, backend, and probably part of the internet in the process",
         "Designed UIs, wrote APIs, managed databases, and silently panicked through deployments",
@@ -124,7 +125,18 @@ const Experience = ({ theme }) => {
                     <h3 className="text-2xl font-bold text-white">{experience.title}</h3>
                     <div className="flex items-center gap-2 text-sm text-gray-400">
                       <Building className="w-4 h-4" />
-                      <span>{experience.company}</span>
+                      {experience.companyUrl ? (
+                        <a
+                          href={experience.companyUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="hover:underline"
+                        >
+                          {experience.company}
+                        </a>
+                      ) : (
+                        <span>{experience.company}</span>
+                      )}
                       <span>·</span>
                       <span>{experience.type}</span>
                     </div>

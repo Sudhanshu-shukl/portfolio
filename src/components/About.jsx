@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { motion, useAnimation } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import { Bot, Music, Check as Chess, Code, Terminal } from 'lucide-react';
+import { Check as Chess, Code, Terminal } from 'lucide-react';
 
 const About = ({ theme }) => {
   const controls = useAnimation();
@@ -30,24 +30,24 @@ const About = ({ theme }) => {
 
   const cards = [
     {
-      icon: <Bot className="w-8 h-8 text-cyan-400" />,
-      title: "AI & ML Enthusiast",
-      description: "Exploring the frontiers of artificial intelligence and machine learning."
-    },
-    {
       icon: <Code className="w-8 h-8 text-cyan-400" />,
-      title: "Software Developer",
-      description: "Building elegant solutions to complex problems."
-    },
-    {
-      icon: <Chess className="w-8 h-8 text-cyan-400" />,
-      title: "Chess Player",
-      description: "Strategist with a rating of 1800. Always thinking several moves ahead."
+      title: "Full‑Stack Developer",
+      description: "Designing, building, and shipping reliable web apps end‑to‑end."
     },
     {
       icon: <Terminal className="w-8 h-8 text-cyan-400" />,
       title: "Backend Engineer",
-      description: "Crafting the unseen magic that powers applications."
+      description: "APIs, databases, performance, and clean architecture."
+    },
+    {
+      icon: <Chess className="w-8 h-8 text-cyan-400" />,
+      title: "Chess Player",
+      description: "Strategist (1800+) — disciplined thinking, under pressure."
+    },
+    {
+      icon: <Code className="w-8 h-8 text-cyan-400" />,
+      title: "Problem Solver",
+      description: "Turning product requirements into maintainable, scalable systems."
     }
   ];
 
@@ -111,10 +111,10 @@ const About = ({ theme }) => {
                 <span className="text-white font-semibold">Location:</span> Greater Noida, India
               </p>
               <p className="leading-relaxed">
-                I’m an AI & ML undergrad who’s serious about mastering my craft. I solve problems with focus and calm, knowing my skills speak louder than words.
+                I’m a Comupter Science undergrad focused on backend and full‑stack development. I care about correctness, performance, and developer experience.
               </p>
               <p className="leading-relaxed">
-                What began as curiosity has turned into a clear purpose: creating meaningful AI and software solutions that make an impact without the noise.
+                I build pragmatic systems: clean APIs, robust data models, and purposeful UIs — shipped with reliability and measured impact.
               </p>
 
             </div>

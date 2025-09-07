@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Github, Linkedin, Mail, Instagram } from 'lucide-react';
+import { Github, Linkedin, Mail, Instagram, Youtube } from 'lucide-react';
 
 const Footer = () => {
   return (
@@ -31,7 +31,7 @@ const Footer = () => {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="text-gray-400 max-w-md mx-auto"
           >
-            AI & ML Engineer | Problem Solver | Chess Player
+            Software Engineer | Problem Solver | Chess Player
           </motion.p>
         </div>
         
@@ -68,6 +68,16 @@ const Footer = () => {
             aria-label="Instagram"
           >
             <Instagram className="w-5 h-5" />
+          </a>
+
+          <a 
+            href="https://www.youtube.com/channel/UCDJvfrnOpYxnVdWuJpP-5Mw" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="p-3 bg-slate-800 rounded-full hover:bg-slate-700 transition-colors duration-300"
+            aria-label="YouTube"
+          >
+            <Youtube className="w-5 h-5" />
           </a>
           
           <a 

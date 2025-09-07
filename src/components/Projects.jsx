@@ -33,9 +33,9 @@ const Projects = () => {
   const projects = [
     {
       icon: <MessageCircle className="w-12 h-12 text-cyan-400" />, 
-      title: "MoodMate AI (Full-Stack AI Chatbot)",
-      description: "Built an offline, full-stack AI chatbot using Llama3, Flask, and ReactJS for mental wellness support. Supports four custom personalities—Sarcastic, Deep, Roaster, and Personal Best friend—for tailored user vibes. Runs fully locally without internet, ideal for privacy-first mental health convos.",
-      techStack: ["Llama3", "Flask", "ReactJS", "Python"],
+      title: "MoodMate (Offline Chat App)",
+      description: "Built a privacy‑first, offline chat application using Flask and ReactJS. Supports multiple personas for custom user experience and runs fully locally for reliability and speed.",
+      techStack: ["Flask", "ReactJS", "Python"],
       color: "from-purple-500 to-indigo-600",
       liveDemo: "https://sudhanshu-shukl.github.io/MoodMate",
       github: "https://github.com/sudhanshu-shukl/moodmate",
@@ -43,9 +43,9 @@ const Projects = () => {
     },
     {
       icon: <Code className="w-12 h-12 text-cyan-400" />,
-      title: "AI-Powered Code Review System",
-      description: "Developed an AI-driven code review system using Llama3 to identify bugs, security flaws, and code smells. Integrated with GitHub Actions for automated pull request reviews and issue tracking. Implemented real-time feedback on code quality with suggestions for improvement.",
-      techStack: ["Llama3", "GitHub Actions", "Python", "AI/ML"],
+      title: "Automated Code Review System",
+      description: "Developed a code review system to flag bugs, security issues, and code smells. Integrated with GitHub Actions for automated PR reviews and issue tracking, and surfaced actionable feedback for maintainers.",
+      techStack: ["GitHub Actions", "Python"],
       color: "from-cyan-500 to-blue-600",
       liveDemo: "#",
       github: "https://github.com/sudhanshu-shukl/code-review",
@@ -54,7 +54,7 @@ const Projects = () => {
     {
       icon: <Database className="w-12 h-12 text-cyan-400" />,
       title: "Serverless Data Warehouse with Real-Time ETL",
-      description: "Built a serverless, distributed data warehouse using AWS Lambda and Google Cloud Functions for real-time ETL. Integrated Presto for high-speed querying of big data and machine learning models for real-time insights. Enabled secure data access with IAM and automated data pipelines using Terraform.",
+      description: "Built a serverless, distributed data warehouse using AWS Lambda and Google Cloud Functions for real‑time ETL. Integrated Presto for high‑speed querying and IAM for secure access. Automated data pipelines with Terraform.",
       techStack: ["AWS Lambda", "Google Cloud", "Presto", "Terraform"],
       color: "from-teal-500 to-green-600",
       liveDemo: "#",
