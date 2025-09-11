@@ -9,7 +9,7 @@ const Projects = () => {
     threshold: 0.3,
     triggerOnce: false
   });
-  
+
   const [sectionRef, sectionInView] = useInView({
     threshold: 0.5,
   });
@@ -32,7 +32,7 @@ const Projects = () => {
 
   const projects = [
     {
-      icon: <MessageCircle className="w-12 h-12 text-cyan-400" />, 
+      icon: <MessageCircle className="w-12 h-12 text-cyan-400" />,
       title: "MoodMate (Offline Chat App)",
       description: "Built a privacy‑first, offline chat application using Flask and ReactJS. Supports multiple personas for custom user experience and runs fully locally for reliability and speed.",
       techStack: ["Flask", "ReactJS", "Python"],
@@ -43,13 +43,13 @@ const Projects = () => {
     },
     {
       icon: <Code className="w-12 h-12 text-cyan-400" />,
-      title: "Automated Code Review System",
-      description: "Developed a code review system to flag bugs, security issues, and code smells. Integrated with GitHub Actions for automated PR reviews and issue tracking, and surfaced actionable feedback for maintainers.",
-      techStack: ["GitHub Actions", "Python"],
+      title: "Full Stack Expense Manager",
+      description: "A simple Expense Tracker built with React, TailwindCSS, Vite, and MongoDB that Tracks expenses, set budgets, visualize data with charts, and export/import CSV files.",
+      techStack: ["ReactJS", "Tailwind CSS", "Node.js", "Express", "MongoDB"],
       color: "from-cyan-500 to-blue-600",
-      liveDemo: "#",
-      github: "https://github.com/sudhanshu-shukl/code-review",
-      completed: false
+      liveDemo: "https://sudhanshu-shukl.github.io/Expense-Manager",
+      github: "https://github.com/sudhanshu-shukl/Expense-Manager",
+      completed: true
     },
     {
       icon: <Database className="w-12 h-12 text-cyan-400" />,
@@ -74,7 +74,7 @@ const Projects = () => {
   ];
 
   return (
-    <section 
+    <section
       ref={sectionRef}
       className="min-h-screen py-20 relative bg-slate-900/50"
     >
@@ -84,8 +84,8 @@ const Projects = () => {
           animate={hasAnimated ? "visible" : "hidden"}
           variants={{
             hidden: { opacity: 0, y: 30 },
-            visible: { 
-              opacity: 1, 
+            visible: {
+              opacity: 1,
               y: 0,
               transition: {
                 duration: 0.8,
@@ -96,16 +96,16 @@ const Projects = () => {
           ref={ref}
           className="text-center mb-16"
         >
-          <h2 
-            data-text="PROJECTS" 
+          <h2
+            data-text="PROJECTS"
             className="glitch-text text-4xl md:text-5xl font-bold mb-8"
-            style={{background: 'linear-gradient(to top, #9CA3AF, #D1D5DB, #FFFFFF)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text'}}
+            style={{ background: 'linear-gradient(to top, #9CA3AF, #D1D5DB, #FFFFFF)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}
           >
             PROJECTS
           </h2>
           <div className="h-0.5 w-24 md:w-32 bg-gradient-to-r from-cyan-500 to-fuchsia-500 mx-auto mb-8"></div>
         </motion.div>
-        
+
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6 md:gap-8 max-w-sm mx-auto md:max-w-none">
           {projects.map((project, index) => (
             <Tilt
@@ -131,7 +131,7 @@ const Projects = () => {
                   <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 p-4 rounded-full bg-white/10 backdrop-blur-lg">
                     {project.icon}
                   </div>
-                  
+
                   {/* Decorative elements */}
                   <div className="absolute bottom-0 left-0 w-full">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
@@ -143,17 +143,17 @@ const Projects = () => {
                     </svg>
                   </div>
                 </div>
-                
+
                 <div className="p-4 md:p-6 relative z-10">
                   <h3 className="text-lg md:text-2xl font-bold mb-3 mt-6 md:mt-8">{project.title}</h3>
                   <p className="text-sm md:text-base text-gray-300 mb-4 md:mb-6">{project.description}</p>
-                  
+
                   <div className="flex flex-col md:flex-row gap-3 mt-auto">
                     <div className="flex flex-wrap gap-2">
                       {project.techStack.map((tech, idx) => (
                         <span
                           key={idx}
-                          className="px-2 md:px-3 py-1 text-xs rounded-full bg-slate-800 text-gray-300"
+                          className="px-2 md:px-3 py-3 text-xs rounded-full bg-slate-800 text-gray-300"
                         >
                           {tech}
                         </span>
@@ -201,21 +201,21 @@ const Projects = () => {
                         className="inline-flex items-center justify-center gap-2 px-3 md:px-4 py-2 rounded-full bg-white/20 backdrop-blur-md text-gray-200 font-semibold shadow-lg hover:bg-gray-700/40 hover:text-white transition-all duration-200 border border-gray-300/20 text-sm md:text-base"
                       >
                         <svg className="w-3 md:w-4 h-3 md:h-4" fill="currentColor" viewBox="0 0 24 24">
-                          <path d="M12 .5C5.73.5.5 5.74.5 12.02c0 5.1 3.29 9.43 7.86 10.96.58.11.79-.25.79-.56 0-.28-.01-1.02-.02-2-3.2.7-3.88-1.54-3.88-1.54-.53-1.34-1.3-1.7-1.3-1.7-1.06-.72.08-.71.08-.71 1.17.08 1.78 1.2 1.78 1.2 1.04 1.78 2.73 1.27 3.4.97.11-.75.41-1.27.74-1.56-2.55-.29-5.23-1.28-5.23-5.7 0-1.26.45-2.29 1.19-3.1-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11.1 11.1 0 0 1 2.9-.39c.98 0 1.97.13 2.9.39 2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.84 1.19 3.1 0 4.43-2.69 5.41-5.25 5.7.42.36.79 1.09.79 2.2 0 1.59-.01 2.87-.01 3.26 0 .31.21.68.8.56C20.71 21.45 24 17.12 24 12.02 24 5.74 18.27.5 12 .5z"/>
+                          <path d="M12 .5C5.73.5.5 5.74.5 12.02c0 5.1 3.29 9.43 7.86 10.96.58.11.79-.25.79-.56 0-.28-.01-1.02-.02-2-3.2.7-3.88-1.54-3.88-1.54-.53-1.34-1.3-1.7-1.3-1.7-1.06-.72.08-.71.08-.71 1.17.08 1.78 1.2 1.78 1.2 1.04 1.78 2.73 1.27 3.4.97.11-.75.41-1.27.74-1.56-2.55-.29-5.23-1.28-5.23-5.7 0-1.26.45-2.29 1.19-3.1-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11.1 11.1 0 0 1 2.9-.39c.98 0 1.97.13 2.9.39 2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.84 1.19 3.1 0 4.43-2.69 5.41-5.25 5.7.42.36.79 1.09.79 2.2 0 1.59-.01 2.87-.01 3.26 0 .31.21.68.8.56C20.71 21.45 24 17.12 24 12.02 24 5.74 18.27.5 12 .5z" />
                         </svg>
                         GitHub
                       </a>
                     </div>
                   </div>
                 </div>
-                
+
                 {/* Hover effect */}
                 <div className="absolute inset-0 bg-gradient-to-t from-indigo-900/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               </motion.div>
             </Tilt>
           ))}
         </div>
-        
+
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
