@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import { Clock, BookOpen, Bot, MessageCircle, Code, Database, MessageSquare } from 'lucide-react';
+import { Clock, BookOpen, Bot, MessageCircle, Code, Database, MessageSquare, Trophy } from 'lucide-react';
 import Tilt from 'react-parallax-tilt';
 
 const Projects = () => {
@@ -49,6 +49,16 @@ const Projects = () => {
       color: "from-cyan-500 to-blue-600",
       liveDemo: "https://sudhanshu-shukl.github.io/Expense-Manager",
       github: "https://github.com/sudhanshu-shukl/Expense-Manager",
+      completed: true
+    },
+    {
+      icon: <Trophy className="w-12 h-12 text-cyan-400" />,
+      title: "Contest Manager",
+      description: "A full-stack web application for tracking and managing coding contest participation across multiple platforms. Features smart color-coded urgency indicators, performance analytics, and data persistence.",
+      techStack: ["React", "Node.js", "MongoDB", "Express.js"],
+      color: "from-emerald-500 to-teal-600",
+      liveDemo: "https://sudhanshu-shukl.github.io/contest-manager",
+      github: "https://github.com/sudhanshu-shukl/contest-manager",
       completed: true
     },
     {
