@@ -1,8 +1,11 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { motion } from 'framer-motion';
-import { ChevronDown, Sun, AlertTriangle } from 'lucide-react';
+import { ChevronDown, Sun, AlertTriangle, Github, FileText } from 'lucide-react';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import 'react-lazy-load-image-component/src/effects/blur.css';
+import LeetCodeImg from '/public/LeetCode.png';
+import CodeForcesImg from '/public/CodeForces.png';
+import ResumeImg from '/public/Resume.png';
 
 
 const Hero = ({ setActiveSection }) => {
@@ -11,16 +14,6 @@ const Hero = ({ setActiveSection }) => {
   const [isPrankOpen, setIsPrankOpen] = useState(false);
   const [showHiMessage, setShowHiMessage] = useState(false);
   
-  const handleDownload = () => {
-    const downloadUrl = 'https://drive.google.com/file/d/1R8GabtOQ7JDsV2kWA2kYOt8z_p1vm7iQ/view?usp=sharing';
-    const link = document.createElement('a');
-    link.href = downloadUrl;
-    link.download = 'Sudhanshu_Resume.pdf';
-    link.target = '_blank';
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-  };
 
   const handleProfileClick = () => {
     setShowHiMessage(true);
@@ -278,63 +271,51 @@ const Hero = ({ setActiveSection }) => {
         
         <motion.p
           variants={item} 
-          className="text-xl md:text-2xl mb-8 text-gray-300"
+          className="text-xl md:text-2xl mb-6 text-gray-300"
         >
-          Software Engineer <span className="text-gray-500">|</span> Problem Solver <span className="text-gray-500">|</span> 6+ years of coding
+          Systems and Backend Engineer <span className="text-gray-500">|</span> Problem Solver <span className="text-gray-500">|</span> 6+ years of coding
         </motion.p>
         
         <motion.div
           variants={item}
-          className="flex flex-col sm:flex-row flex-wrap justify-center gap-3 sm:gap-4 mt-8 relative z-20 px-4"
+          className="flex flex-wrap justify-center gap-6 mb-8"
         >
-          {/* Primary buttons - full width on mobile, flex on desktop */}
-          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 w-full sm:w-auto">
-            <a
-              href="#projects"
-              className="group relative px-6 sm:px-8 py-3 sm:py-3 bg-slate-800/60 backdrop-blur-md border border-white/20 rounded-xl text-white font-semibold overflow-hidden transition-all duration-500 hover:scale-105 hover:border-cyan-400 hover:shadow-xl hover:shadow-cyan-500/30 shadow-lg text-center sm:text-left"
-            >
-              <div className="absolute inset-0 bg-gradient-to-r from-cyan-500/20 to-purple-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-              <div className="absolute inset-0 bg-gradient-to-r from-cyan-500/10 via-transparent to-purple-500/10 group-hover:animate-pulse"></div>
-              <span className="relative z-10 text-sm sm:text-base">Explore My Work</span>
-            </a>
-            
-            <a
-              href="#contact"
-              className="group relative px-6 sm:px-8 py-3 sm:py-3 bg-slate-800/60 backdrop-blur-md border border-white/20 rounded-xl text-white font-semibold overflow-hidden transition-all duration-500 hover:scale-105 hover:border-cyan-400 hover:shadow-xl hover:shadow-cyan-500/30 shadow-lg text-center sm:text-left"
-            >
-              <div className="absolute inset-0 bg-gradient-to-r from-cyan-500/20 to-purple-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-              <div className="absolute inset-0 bg-gradient-to-r from-cyan-500/10 via-transparent to-purple-500/10 group-hover:animate-pulse"></div>
-              <span className="relative z-10 text-sm sm:text-base">Get In Touch</span>
-            </a>
-          </div>
+          <a
+            href="https://leetcode.com/u/Sudhanshu_shukla1/" target="_blank"
+            className="group flex items-center gap-2 bg-slate-800/40 backdrop-blur-sm border border-orange-500/30 rounded-full px-4 py-2 hover:border-orange-400 hover:bg-slate-800/60 transition-all duration-300 hover:scale-105"
+          >
+            <img src={LeetCodeImg} alt="LeetCode" className="w-9 h-9 object-contain" />
+            <span className="text-orange-400 font-semibold">Knight</span>
+            <span className="text-white font-bold">1828+</span>
+          </a>
           
-          {/* Secondary buttons - smaller on mobile */}
-          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 w-full sm:w-auto">
-            <button
-              onClick={handleDownload}
-              className="group relative px-6 sm:px-8 py-3 sm:py-3 bg-slate-800/60 backdrop-blur-md border border-white/20 rounded-xl text-white font-semibold overflow-hidden transition-all duration-500 hover:scale-105 hover:border-cyan-400 hover:shadow-xl hover:shadow-cyan-500/30 shadow-lg flex items-center justify-center gap-2"
-            >
-              <div className="absolute inset-0 bg-gradient-to-r from-cyan-500/20 to-purple-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-              <div className="absolute inset-0 bg-gradient-to-r from-cyan-500/10 via-transparent to-purple-500/10 group-hover:animate-pulse"></div>
-              <span className="relative z-10 flex items-center gap-2 text-sm sm:text-base">
-                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                </svg>
-                <span className="hidden sm:inline">Download Resume</span>
-                <span className="sm:hidden">Resume</span>
-              </span>
-            </button>
-            
-            <a
-              href="https://github.com/sudhanshu-shukl/Portfolio" target="_blank"
-              className="group relative px-6 sm:px-8 py-3 sm:py-3 bg-slate-800/60 backdrop-blur-md border border-white/20 rounded-xl text-white font-semibold overflow-hidden transition-all duration-500 hover:scale-105 hover:border-cyan-400 hover:shadow-xl hover:shadow-cyan-500/30 shadow-lg text-center sm:text-left"
-            >
-              <div className="absolute inset-0 bg-gradient-to-r from-cyan-500/20 to-purple-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-              <div className="absolute inset-0 bg-gradient-to-r from-cyan-500/10 via-transparent to-purple-500/10 group-hover:animate-pulse"></div>
-              <span className="relative z-10 text-sm sm:text-base">Source Code</span>
-            </a>
-          </div>
+          <a
+            href="https://codeforces.com/profile/sudhss" target="_blank"
+            className="group flex items-center gap-2 bg-slate-800/40 backdrop-blur-sm border border-red-500/30 rounded-full px-4 py-2 hover:border-red-400 hover:bg-slate-800/60 transition-all duration-300 hover:scale-105"
+          >
+            <img src={CodeForcesImg} alt="CodeForces" className="w-9 h-9 object-contain" />
+            <span className="text-red-400 font-semibold">Specialist</span>
+            <span className="text-white font-bold">1512+</span>
+          </a>
+          
+          <a
+            href="https://github.com/sudhanshu-shukl" target="_blank"
+            className="group flex items-center gap-2 bg-slate-800/40 backdrop-blur-sm border border-gray-500/30 rounded-full px-4 py-2 hover:border-gray-400 hover:bg-slate-800/60 transition-all duration-300 hover:scale-105"
+          >
+            <Github className="w-9 h-9 text-gray-400" />
+            <span className="text-White-400 font-semibold">GitHub</span>
+            <span className="text-white font-bold">50+</span>
+          </a>
+          <a
+            href="https://drive.google.com/file/d/1R8GabtOQ7JDsV2kWA2kYOt8z_p1vm7iQ/view?usp=sharing" target="_blank"
+            className="group flex items-center gap-2 bg-slate-800/40 backdrop-blur-sm border border-gray-500/30 rounded-full px-4 py-2 hover:border-gray-400 hover:bg-slate-800/60 transition-all duration-300 hover:scale-105"
+          >
+            <FileText className="w-9 h-9 text-gray-400" />
+            <span className="text-white-400 font-semibold">Resume</span>
+            {/* <span className="text-white font-bold">50+</span> */}
+          </a>
         </motion.div>
+        
       </motion.div>
       
 
