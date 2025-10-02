@@ -50,8 +50,13 @@ const Achievements = () => {
     },
     {
       icon: <TrendingUp className="w-12 h-12 text-orange-500" />,
-      title: "LeetCode Contest Rating: 1697",
-      description: "Global Rank: Top 13% (89,855 / 694,599) - Demonstrating strong problem-solving skills and algorithmic thinking."
+      title: "LeetCode Contest Rating: 1858 - Knight",
+      description: "Global Rank: Top 5% (41,399 / 769,342) - Demonstrating strong problem-solving skills and algorithmic thinking."
+    },
+    {
+      icon: <TrendingUp className="w-12 h-12 text-red-400" />,
+      title: "CodeForces Rating: 1600+ - Expert",
+      description: "Top 5000 globally"
     }
   ];
 
