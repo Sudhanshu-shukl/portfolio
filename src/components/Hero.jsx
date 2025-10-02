@@ -13,7 +13,7 @@ const Hero = ({ setActiveSection }) => {
   const textRef = useRef(null);
   const [isPrankOpen, setIsPrankOpen] = useState(false);
   const [showHiMessage, setShowHiMessage] = useState(false);
-  
+
 
   const handleProfileClick = () => {
     setShowHiMessage(true);
@@ -21,7 +21,7 @@ const Hero = ({ setActiveSection }) => {
       setShowHiMessage(false);
     }, 2000);
   };
-  
+
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
@@ -31,26 +31,26 @@ const Hero = ({ setActiveSection }) => {
       },
       { threshold: 0.5 }
     );
-    
+
     const element = document.getElementById('home');
     if (element) {
       observer.observe(element);
     }
-    
+
     return () => {
       if (element) {
         observer.unobserve(element);
       }
     };
   }, [setActiveSection]);
-  
+
   useEffect(() => {
     if (hasAnimated || !textRef.current) return;
-    
+
     const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     let iteration = 0;
     const originalText = textRef.current.dataset.value;
-    
+
     const interval = setInterval(() => {
       textRef.current.innerText = originalText
         .split("")
@@ -61,15 +61,15 @@ const Hero = ({ setActiveSection }) => {
           return letters[Math.floor(Math.random() * 26)];
         })
         .join("");
-      
+
       if (iteration >= originalText.length) {
         clearInterval(interval);
         setHasAnimated(true);
       }
-      
+
       iteration += 1 / 3;
     }, 50);
-    
+
     return () => clearInterval(interval);
   }, [hasAnimated]);
 
@@ -83,15 +83,15 @@ const Hero = ({ setActiveSection }) => {
       }
     }
   };
-  
+
   const item = {
     hidden: { y: 20, opacity: 0 },
-    show: { 
-      y: 0, 
+    show: {
+      y: 0,
       opacity: 1,
-      transition: { 
-        duration: 0.8, 
-        ease: [0.25, 0.1, 0.25, 1] 
+      transition: {
+        duration: 0.8,
+        ease: [0.25, 0.1, 0.25, 1]
       }
     }
   };
@@ -99,14 +99,14 @@ const Hero = ({ setActiveSection }) => {
   return (
     <div className="min-h-screen flex flex-col justify-center items-center relative px-4 overflow-hidden pt-22">
       <div className="absolute inset-0"></div>
-      
+
       <motion.div
         variants={container}
         initial="hidden"
         animate="show"
         className="text-center z-10 max-w-4xl"
       >
-        <motion.div 
+        <motion.div
           variants={item}
           className="mb-12 relative w-64 h-64 md:w-80 md:h-80 mx-auto group cursor-pointer"
           onClick={handleProfileClick}
@@ -114,10 +114,10 @@ const Hero = ({ setActiveSection }) => {
           {/* Cool animated border */}
           <div className="absolute inset-0 rounded-full overflow-hidden">
             {/* Multiple rotating rings */}
-            <div className="absolute inset-0 rounded-full border-2 border-cyan-500/30 animate-spin" style={{animationDuration: '12s'}}></div>
-            <div className="absolute inset-1 rounded-full border border-purple-500/40 animate-spin" style={{animationDuration: '8s', animationDirection: 'reverse'}}></div>
-            <div className="absolute inset-2 rounded-full border border-cyan-400/20 animate-spin" style={{animationDuration: '15s'}}></div>
-            
+            <div className="absolute inset-0 rounded-full border-2 border-cyan-500/30 animate-spin" style={{ animationDuration: '12s' }}></div>
+            <div className="absolute inset-1 rounded-full border border-purple-500/40 animate-spin" style={{ animationDuration: '8s', animationDirection: 'reverse' }}></div>
+            <div className="absolute inset-2 rounded-full border border-cyan-400/20 animate-spin" style={{ animationDuration: '15s' }}></div>
+
             {/* Floating border particles */}
             {[...Array(8)].map((_, i) => (
               <div
@@ -132,7 +132,7 @@ const Hero = ({ setActiveSection }) => {
               />
             ))}
           </div>
-          
+
           {/* Image container with glass effect */}
           <div className="absolute inset-1 rounded-full bg-slate-900/50 backdrop-blur-sm p-2">
             <div className="relative w-full h-full overflow-hidden rounded-full">
@@ -151,10 +151,10 @@ const Hero = ({ setActiveSection }) => {
                     }}
                   />
                 ))}
-                
+
                 {/* Rotating gradient orbs */}
                 <div className="absolute inset-0 rounded-full">
-                  <div 
+                  <div
                     className="absolute w-16 h-16 rounded-full bg-gradient-to-r from-cyan-500/20 to-purple-500/20 animate-spin"
                     style={{
                       left: '20%',
@@ -162,7 +162,7 @@ const Hero = ({ setActiveSection }) => {
                       animationDuration: '8s'
                     }}
                   />
-                  <div 
+                  <div
                     className="absolute w-12 h-12 rounded-full bg-gradient-to-r from-purple-500/20 to-pink-500/20 animate-spin"
                     style={{
                       right: '25%',
@@ -171,7 +171,7 @@ const Hero = ({ setActiveSection }) => {
                       animationDirection: 'reverse'
                     }}
                   />
-                  <div 
+                  <div
                     className="absolute w-8 h-8 rounded-full bg-gradient-to-r from-cyan-500/30 to-blue-500/30 animate-spin"
                     style={{
                       left: '60%',
@@ -180,9 +180,9 @@ const Hero = ({ setActiveSection }) => {
                     }}
                   />
                 </div>
-                
+
                 {/* Subtle mesh pattern */}
-                <div 
+                <div
                   className="absolute inset-0 rounded-full opacity-30"
                   style={{
                     background: `
@@ -194,7 +194,7 @@ const Hero = ({ setActiveSection }) => {
                   }}
                 />
               </div>
-              
+
               {/* Main image */}
               <LazyLoadImage
                 src="Sudhanshu.png"
@@ -203,11 +203,11 @@ const Hero = ({ setActiveSection }) => {
                 effect="blur"
                 className="relative z-10"
               />
-              
-              {}
+
+              { }
               <div className="absolute inset-0 bg-gradient-to-t from-cyan-500/20 via-transparent to-purple-500/20 mix-blend-overlay group-hover:opacity-0 transition-opacity duration-700"></div>
-              
-              {}
+
+              { }
               <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700">
                 <div className="absolute top-1/4 left-0 w-full h-px bg-cyan-500/50 animate-glitch-h"></div>
                 <div className="absolute top-1/3 left-0 w-full h-px bg-purple-500/50 animate-glitch-h delay-100"></div>
@@ -215,8 +215,8 @@ const Hero = ({ setActiveSection }) => {
               </div>
             </div>
           </div>
-          
-          {}
+
+          { }
           <div className="absolute -inset-4 opacity-0 group-hover:opacity-100 transition-opacity duration-700">
             {[...Array(6)].map((_, i) => (
               <div
@@ -247,35 +247,35 @@ const Hero = ({ setActiveSection }) => {
           )}
         </motion.div>
 
-        <motion.h2 
+        <motion.h2
           variants={item}
           className="text-xl md:text-2xl mb-4 text-gray-300"
         >
           <span className="text-gradient">Welcome to my digital universe</span>
         </motion.h2>
-        
-        <motion.h1 
+
+        <motion.h1
           variants={item}
           className="text-5xl md:text-7xl font-bold mb-4 tracking-tighter group cursor-pointer relative"
           data-value="SUDHANSHU SHUKLA"
           ref={textRef}
-          style={{background: 'linear-gradient(to top, #9CA3AF, #D1D5DB, #FFFFFF)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text'}}
+          style={{ background: 'linear-gradient(to top, #9CA3AF, #D1D5DB, #FFFFFF)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}
         >
           SUDHANSHU SHUKLA
         </motion.h1>
-        
-        <motion.div 
+
+        <motion.div
           variants={item}
           className="h-0.5 w-24 md:w-32 bg-gradient-to-r from-cyan-500 to-fuchsia-500 mx-auto my-8"
         ></motion.div>
-        
+
         <motion.p
-          variants={item} 
+          variants={item}
           className="text-xl md:text-2xl mb-6 text-gray-300"
         >
           Systems and Backend Engineer <span className="text-gray-500">|</span> Problem Solver <span className="text-gray-500">|</span> 6+ years of coding
         </motion.p>
-        
+
         <motion.div
           variants={item}
           className="flex flex-wrap justify-center gap-6 mb-8"
@@ -288,16 +288,16 @@ const Hero = ({ setActiveSection }) => {
             <span className="text-orange-400 font-semibold">Knight</span>
             <span className="text-white font-bold">1828+</span>
           </a>
-          
+
           <a
-            href="https://codeforces.com/profile/sudhss" target="_blank"
+            href="https://codeforces.com/profile/MemoryLeakLord" target="_blank"
             className="group flex items-center gap-2 bg-slate-800/40 backdrop-blur-sm border border-red-500/30 rounded-full px-4 py-2 hover:border-red-400 hover:bg-slate-800/60 transition-all duration-300 hover:scale-105"
           >
             <img src={CodeForcesImg} alt="CodeForces" className="w-9 h-9 object-contain" />
             <span className="text-red-400 font-semibold">Specialist</span>
             <span className="text-white font-bold">1512+</span>
           </a>
-          
+
           <a
             href="https://github.com/sudhanshu-shukl" target="_blank"
             className="group flex items-center gap-2 bg-slate-800/40 backdrop-blur-sm border border-gray-500/30 rounded-full px-4 py-2 hover:border-gray-400 hover:bg-slate-800/60 transition-all duration-300 hover:scale-105"
@@ -315,9 +315,9 @@ const Hero = ({ setActiveSection }) => {
             {/* <span className="text-white font-bold">50+</span> */}
           </a>
         </motion.div>
-        
+
       </motion.div>
-      
+
 
     </div>
   );

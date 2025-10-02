@@ -31,7 +31,7 @@ const Footer = () => {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="text-gray-400 max-w-md mx-auto"
           >
-            Software Engineer | Problem Solver | Chess Player
+            Systems and Backend Engineer | Problem Solver | 6+ years of coding
           </motion.p>
         </div>
         
