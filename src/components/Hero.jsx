@@ -290,7 +290,7 @@ const Hero = ({ setActiveSection }) => {
           </a>
 
           <a
-            href="https://codeforces.com/profile/MemoryLeakLord" target="_blank"
+            href="https://codeforces.com/profile/NonVolatile" target="_blank"
             className="group flex items-center gap-2 bg-slate-800/40 backdrop-blur-sm border border-red-500/30 rounded-full px-4 py-2 hover:border-red-400 hover:bg-slate-800/60 transition-all duration-300 hover:scale-105"
           >
             <img src={CodeForcesImg} alt="CodeForces" className="w-9 h-9 object-contain" />
