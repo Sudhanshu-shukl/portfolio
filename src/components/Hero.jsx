@@ -286,7 +286,7 @@ const Hero = ({ setActiveSection }) => {
           >
             <img src={LeetCodeImg} alt="LeetCode" className="w-9 h-9 object-contain" />
             <span className="text-orange-400 font-semibold">Knight</span>
-            <span className="text-white font-bold">1828+</span>
+            <span className="text-white font-bold">1858+</span>
           </a>
 
           <a
