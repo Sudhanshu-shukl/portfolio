@@ -304,7 +304,7 @@ const Hero = ({ setActiveSection }) => {
           >
             <Github className="w-9 h-9 text-gray-400" />
             <span className="text-White-400 font-semibold">GitHub</span>
-            <span className="text-white font-bold">50+</span>
+            <span className="text-white font-bold">10+</span>
           </a>
           <a
             href="https://drive.google.com/file/d/1R8GabtOQ7JDsV2kWA2kYOt8z_p1vm7iQ/view?usp=sharing" target="_blank"
