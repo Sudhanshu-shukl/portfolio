@@ -3,9 +3,9 @@ import { motion } from 'framer-motion';
 import { ChevronDown, Sun, AlertTriangle, Github, FileText } from 'lucide-react';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import 'react-lazy-load-image-component/src/effects/blur.css';
-import LeetCodeImg from '/public/LeetCode.png';
-import CodeForcesImg from '/public/CodeForces.png';
-import ResumeImg from '/public/Resume.png';
+import LeetCodeImg from '/LeetCode.png';
+import CodeForcesImg from '/CodeForces.png';
+import ResumeImg from '/Resume.png';
 
 
 const Hero = ({ setActiveSection }) => {
@@ -13,7 +13,29 @@ const Hero = ({ setActiveSection }) => {
   const textRef = useRef(null);
   const [isPrankOpen, setIsPrankOpen] = useState(false);
   const [showHiMessage, setShowHiMessage] = useState(false);
+  const [leetcodeData, setLeetcodeData] = useState(null);
+  const [isLoadingLeetcode, setIsLoadingLeetcode] = useState(true);
+  const [contestRating, setContestRating] = useState(null);
 
+  // Helper function to get LeetCode badge
+  const getLeetcodeBadge = () => {
+    if (leetcodeData && leetcodeData.badge && leetcodeData.badge.name) {
+      const badgeName = leetcodeData.badge.name;
+      // Map badge names to colors
+      switch (badgeName.toLowerCase()) {
+        case 'guardian':
+          return { name: 'Guardian', color: 'text-red-400' };
+        case 'knight':
+          return { name: 'Knight', color: 'text-orange-400' };
+        case 'master':
+          return { name: 'Master', color: 'text-purple-400' };
+        default:
+          return { name: badgeName, color: 'text-orange-400' };
+      }
+    }
+    // Fallback to Knight if no badge data
+    return { name: 'Knight', color: 'text-orange-400' };
+  };
 
   const handleProfileClick = () => {
     setShowHiMessage(true);
@@ -43,6 +65,59 @@ const Hero = ({ setActiveSection }) => {
       }
     };
   }, [setActiveSection]);
+
+  // Fetch LeetCode contest rating using GraphQL
+  useEffect(() => {
+    const fetchLeetcodeContestRating = async () => {
+      try {
+        setIsLoadingLeetcode(true);
+        
+        const graphqlQuery = {
+          query: `
+            query userContestRankingInfo($username: String!) {
+              userContestRanking(username: $username) {
+                attendedContestsCount
+                rating
+                globalRanking
+                totalParticipants
+                topPercentage
+                badge {
+                  name
+                }
+              }
+            }
+          `,
+          variables: {
+            username: "Sudhss"
+          }
+        };
+
+        const response = await fetch('https://leetcode.com/graphql', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(graphqlQuery)
+        });
+
+        if (response.ok) {
+          const data = await response.json();
+          if (data.data && data.data.userContestRanking) {
+            setContestRating(data.data.userContestRanking.rating);
+            setLeetcodeData(data.data.userContestRanking);
+          }
+        } else {
+          console.error('Failed to fetch LeetCode contest rating');
+        }
+      } catch (error) {
+        console.error('Error fetching LeetCode contest rating:', error);
+      } finally {
+        setIsLoadingLeetcode(false);
+      }
+    };
+
+    fetchLeetcodeContestRating();
+  }, []);
 
   useEffect(() => {
     if (hasAnimated || !textRef.current) return;
@@ -285,8 +360,24 @@ const Hero = ({ setActiveSection }) => {
             className="group flex items-center gap-2 bg-slate-800/40 backdrop-blur-sm border border-orange-500/30 rounded-full px-4 py-2 hover:border-orange-400 hover:bg-slate-800/60 transition-all duration-300 hover:scale-105"
           >
             <img src={LeetCodeImg} alt="LeetCode" className="w-9 h-9 object-contain" />
-            <span className="text-orange-400 font-semibold">Knight</span>
-            <span className="text-white font-bold">1858+</span>
+            {isLoadingLeetcode ? (
+              <>
+                <span className="text-orange-400 font-semibold animate-pulse">Loading...</span>
+                <span className="text-white font-bold animate-pulse">---</span>
+              </>
+            ) : contestRating ? (
+              <>
+                <span className={`font-semibold ${getLeetcodeBadge().color}`}>
+                  {getLeetcodeBadge().name}
+                </span>
+                <span className="text-white font-bold">{contestRating}</span>
+              </>
+            ) : (
+              <>
+                <span className="text-orange-400 font-semibold">Knight</span>
+                <span className="text-white font-bold">1858</span>
+              </>
+            )}
           </a>
 
           <a
